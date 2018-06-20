@@ -5,13 +5,18 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
 import com.bst.dao.UsuarioDao;
+import com.bst.model.CategoriaUsuario;
+import com.bst.model.CentroOperativo;
+import com.bst.model.EstatusUsuario;
+import com.bst.model.Usuario;
 
 
 @Repository("usuarioDao")
@@ -72,6 +77,100 @@ public class UsuariosDaoImpl implements UsuarioDao {
 			}
 		}		
 		return a;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public List getUsuarios() {
+		List lista = new ArrayList();
+		Connection conn = null;
+		try {
+			String sql = "select tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , " + 
+					"tblusuarios.fechanacimiento , tblcentrooperativo.nombre as centro , tblcategoriausuario.detalle as categoria, " + 
+					"tblestatususuarios.detalle as estatus from tblusuarios , tblcategoriausuario , tblcentrooperativo,tblestatususuarios where " + 
+					"tblusuarios.idCategoria = tblcategoriausuario.idCategoria and tblusuarios.idCentroOperativo = tblcentrooperativo.idCentroOperativo and " + 
+					"tblusuarios.idEstatus = tblestatususuarios.idEstatus;  ";
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Usuario usuario = new Usuario();
+				usuario.setNombre(rs.getString("nombre"));
+				usuario.setId(rs.getInt("idUsuarios"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setTelefono(rs.getString("telefono"));
+				usuario.setFechaNacimiento(rs.getDate("fechanacimiento"));
+				EstatusUsuario status = new EstatusUsuario();
+				status.setDetalle(rs.getString("estatus"));
+				usuario.setEstatus(status);
+				CategoriaUsuario categoria = new CategoriaUsuario();
+				categoria.setDetalle(rs.getString("categoria"));
+				usuario.setCategoria(categoria);
+				CentroOperativo centro = new CentroOperativo();
+				centro.setCentroOpeativo(rs.getString("centro"));
+				usuario.setCentro(centro);
+				lista.add(usuario);
+			}
+			rs.close();
+			ps.close();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+			
+		}finally {
+		if (conn != null) {
+			try {
+			conn.close();
+			} catch (SQLException e) {}
+		}
+	}		
+		return lista;
+	}
+
+	@Override
+	public Usuario getUsuario(String idUsuario) {
+		Connection conn = null;
+		Usuario usuario = new Usuario();
+		try {
+			String sql = "select tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , tblusuarios.fechanacimiento , " + 
+					"tblcentrooperativo.nombre as centro ,tblcentrooperativo.idCentroOperativo as idcentro , " + 
+					"tblcategoriausuario.detalle as categoria, tblcategoriausuario.idCategoria as idcategoria," + 
+					"tblestatususuarios.detalle as estatus , tblestatususuarios.idEstatus as idEstatus from tblusuarios , tblcategoriausuario , tblcentrooperativo,tblestatususuarios where " + 
+					"tblusuarios.idCategoria = tblcategoriausuario.idCategoria and tblusuarios.idCentroOperativo = tblcentrooperativo.idCentroOperativo and " + 
+					"tblusuarios.idEstatus = tblestatususuarios.idEstatus and tblusuarios.idUsuarios = "+idUsuario;
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				CentroOperativo centro = new CentroOperativo();
+				CategoriaUsuario categoria = new CategoriaUsuario();
+				EstatusUsuario status = new EstatusUsuario();
+				usuario.setId(rs.getInt("idUsuarios"));
+				usuario.setNombre(rs.getString("nombre"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setTelefono(rs.getString("telefono"));
+				usuario.setFechaNacimiento(rs.getDate("fechanacimiento"));
+				centro.setCentroOpeativo(rs.getString("centro"));
+				centro.setId(rs.getInt("idcentro"));
+				categoria.setId(rs.getInt("idcategoria"));
+				categoria.setDetalle(rs.getString("categoria"));
+				status.setId(rs.getInt("idEstatus"));
+				status.setDetalle(rs.getString("estatus"));
+				usuario.setCentro(centro);
+				usuario.setCategoria(categoria);
+				usuario.setEstatus(status);
+			}
+			
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+			
+		}finally {
+		if (conn != null) {
+			try {
+			conn.close();
+			} catch (SQLException e) {}
+		}
+	}		
+		return usuario;
 	}
 
 }

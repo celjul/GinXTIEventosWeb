@@ -7,10 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bst.model.Usuario;
 import com.bst.restcontroller.EndpointsRest;
 
 
@@ -73,12 +75,22 @@ public class HelloController {
     
     @SuppressWarnings("rawtypes")
 	@GetMapping("/usuariosadmin")
-    public String  usuariosadmin(Map<String, Object> model) {
+    public String  usuariosadmin(Model model) {
     	Map mapa = serviciosRest.getlistausuarios();
     	List lista = (List) mapa.get("usuarios");
-    	model.put("lista",lista);	
-        return "registro";
+    	model.addAttribute("lista",lista);	
+        return "usuariosadmin";
     }
+    
+    @SuppressWarnings("rawtypes")
+   	@GetMapping("/editarUsuario")
+       public String  editarUsuario(Model model,HttpServletRequest request) {
+    	String idUsuario = request.getParameter("idUsuario");
+       	Map mapa = serviciosRest.getUsuario(idUsuario);
+       	Usuario usuario = (Usuario) mapa.get("usuario");
+       	model.addAttribute("usuario",usuario);	
+        return "editarusuario";
+       }
 
 
 }

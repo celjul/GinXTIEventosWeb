@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bst.dao.CentroOperativoDao;
 import com.bst.dao.UsuarioDao;
+import com.bst.model.Usuario;
 
 @RestController
 public class EndpointsRest {
@@ -54,7 +55,7 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
 		 Map mapa = new HashMap<>();
-		 List usuarios = usuarioDao.getListaUsuarios();
+		 List usuarios = usuarioDao.getUsuarios();
 		 mapa.put("usuarios", usuarios);
 		 context.close();
 		 return mapa;
@@ -79,4 +80,17 @@ public class EndpointsRest {
 	    context.close();
 	    return mapa;    
     }
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTgetUsuario")
+	public Map getUsuario(@RequestParam(value="idusuario") String idUsuario) throws JSONException{
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		usuarioDao = context.getBean(UsuarioDao.class);
+	    Map mapa = new HashMap<>();
+	    Usuario usuario = usuarioDao.getUsuario(idUsuario);
+	    mapa.put("usuario", usuario);
+	    context.close();
+	    return mapa;    
+		
+	}
 }

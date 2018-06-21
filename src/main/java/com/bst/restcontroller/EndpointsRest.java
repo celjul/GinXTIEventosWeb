@@ -63,7 +63,7 @@ public class EndpointsRest {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTanadirUsuario")
-	public Map registrar(
+	public void registrar(
 			@RequestParam(value="nombre") String nombre,
 			@RequestParam(value="email") String email,
 			@RequestParam(value="contrasena") String contrasena,
@@ -76,15 +76,13 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
 		usuarioDao.registrar(nombre, email, contrasena, telefono, fechaNacimiento, idCentroOperativo, idCategoria);
-	    Map mapa = new HashMap<>();
-	    mapa.put("Usuario", "hola mundo");
 	    context.close();
-	    return mapa;    
+  
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTanadirCliente")
-	public Map registrarClientes(
+	public void registrarClientes(
 			@RequestParam(value="nombre") String nombre,
 			@RequestParam(value="email") String email,
 			@RequestParam(value="contrasena") String contrasena,
@@ -97,10 +95,7 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
 		usuarioDao.registrarCliente(nombre, email, contrasena, telefono, fechaNacimiento, empresa, idCategoria);
-	    Map mapa = new HashMap<>();
-	    mapa.put("Usuario", "hola mundo");
-	    context.close();
-	    return mapa;    
+	    context.close(); 
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -114,5 +109,18 @@ public class EndpointsRest {
 	    context.close();
 	    return mapa;    
 		
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTupdateUsuario")
+	public void updateUsuario(@RequestParam(value="nombre") String nombre, 
+			@RequestParam(value="email") String email,@RequestParam(value="telefono") String telefono,
+			@RequestParam(value="fechaNacimiento") Date fechaNacimiento,@RequestParam(value="centro") String centro,
+			@RequestParam(value="categoria") int categoria, @RequestParam(value="status") int status, 
+			@RequestParam(value="empresa") String empresa,@RequestParam(value="idUsuario") String idUsuario) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		usuarioDao = context.getBean(UsuarioDao.class);
+		usuarioDao.editarUsuario(nombre,email,telefono,fechaNacimiento,centro,categoria,status,empresa,idUsuario);
+		 context.close();
 	}
 }

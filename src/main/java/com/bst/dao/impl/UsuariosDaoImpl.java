@@ -210,5 +210,30 @@ public class UsuariosDaoImpl implements UsuarioDao {
 		}		
 	}
 
+	@Override
+	public void editarUsuario(String nombre, String email, String telefono, Date fechaNacimiento, String centro,
+			int categoria, int status, String empresa, String idUsuario) {
+		Connection conn = null;
+		try {
+			String sql = "update tblusuarios set nombre = '"+nombre+"' email = '"+email+"' telefono='"+telefono+"' fechanacimiento='"+fechaNacimiento+"'"
+					+ "' idCentroOperativo="+centro+"idCategoria="+categoria+"idEstatus="+status+"empresa='"+empresa+"' where idUsuario="+idUsuario;
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			ps.close();
+		}
+			catch (SQLException e) {
+				throw new RuntimeException(e);
+				
+			}finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}		
+		
+	}
+
 
 }

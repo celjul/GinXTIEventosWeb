@@ -11,20 +11,12 @@
 <div class="divTable">
 	<div class="divTableBody">
 		<div class="divTableRow">
-		<div class="divTableCell"><a href="actividadesadmin">Actividades</a></div>
-		<div class="divTableCell"><a href="expositoresadmin">Expositores</a></div>
-		<div class="divTableCell"><a href="usuariosadmin">Usuarios</a></div>
-	</div>
-	<div class="divTableRow">
-		<div class="divTableCell"><a href="actividades">Ponentes</a></div>
-		<div class="divTableCell"><a href="actividades">Pagos</a></div>
 		<div class="divTableCell"><a href="actividades">Conferencias</a></div>
+		<div class="divTableCell"><a href="expositoresadmin">Expositores</a></div>
+		<div class="divTableCell"><a href="usuariosadmin">Asistentes</a></div>
+		<div class="divTableCell"><a href="actividades">Ponentes</a></div>
 	</div>
-	<div class="divTableRow">
-		<div class="divTableCell"> </div>
-		<div class="divTableCell"> </div>
-		<div class="divTableCell"> </div>
-		</div>
+
 	</div>
 </div>
 </body>

@@ -93,19 +93,29 @@ public class HelloController {
     	String idUsuario = request.getParameter("idUsuario");
        	Map mapa = serviciosRest.getUsuario(idUsuario);
        	Usuario usuario = (Usuario) mapa.get("usuario");
-       	model.addAttribute("usuario",usuario);	
+       	Map maps = serviciosRest.getCentrosOperativos();
+       	List listacentro = (List) maps.get("Centros Operativos");
+       	model.addAttribute("usuario",usuario);
+       	model.addAttribute("lista", listacentro);
         return "editarusuario";
        }
-  /*  
+    
     @SuppressWarnings("rawtypes")
-   	@GetMapping("/editarUsuario")
-       public String  editarUsuario(Model model,HttpServletRequest request) {
+   	@GetMapping("/updateUsuario")
+       public String  updateUsuario(Model model,HttpServletRequest request) {
+    	String nombre = request.getParameter("txtnombre");
+    	String email= request.getParameter("txtemail");
+    	String telefono= request.getParameter("txttelefono");
+    	String fechaNacimientoTemp= request.getParameter("txtfecha");
+    	String centro= request.getParameter("centrooperativo");
+    	int categoria= Integer.valueOf(request.getParameter("categoria"));
+    	int status= Integer.valueOf(request.getParameter("status"));
+    	String Empresa= request.getParameter("txtempresa");
     	String idUsuario = request.getParameter("idUsuario");
-       	Map mapa = serviciosRest.getUsuario(idUsuario);
-       	Usuario usuario = (Usuario) mapa.get("usuario");
-       	model.addAttribute("usuario",usuario);	
-        return "editarusuario";
+    	Date fechaNacimiento = Date.valueOf(fechaNacimientoTemp);
+       	serviciosRest.updateUsuario(nombre,email,telefono,fechaNacimiento,centro,categoria,status,Empresa,idUsuario);
+        return "menuadmin";
        }
-*/
+
 
 }

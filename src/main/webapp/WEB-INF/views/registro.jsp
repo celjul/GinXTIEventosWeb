@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -44,38 +45,9 @@
 		<div class="separacion"></div>
 		<div class="contenido">
 			<select hidden="hidden" style="background-image:url(/resources/imagenes/centrooperativo.png)"class ="inputredondeado" id="centrooperativo" name="centrooperativo" >
-				  <option value="1">Seleccione centro</option>
-				  <option value="2">Alcanfores</option>
-				  <option value="3">Amores</option>
-				  <option value="4">Azcapotzalco</option>
-				  <option value="5">Cancún</option>
-				  <option value="6">Centro</option>
-				  <option value="7">Colorines</option>
-				  <option value="8">Interlomas</option>
-				  <option value="9">Maycky</option>
-				  <option value="10">Montes Urales</option>
-				  <option value="11">Polanco</option>
-				  <option value="12">Presidencia</option>
-				  <option value="13">Presidencia I</option>
-				  <option value="14">Presidencia II</option>
-				  <option value="15">Presidencia III</option>
-				  <option value="16">Presidencia IV</option>
-				  <option value="17">Presidencia V</option>
-				  <option value="18">Presidencia VI</option>
-				  <option value="19">Presidencia VII</option>
-				  <option value="20">Presidencia A</option>
-				  <option value="21">Presidencia B</option>
-				  <option value="22">Santa Fe</option>
-				  <option value="23">Santa Fe Cancún</option>
-			  	  <option value="24">Satélite</option>
-				  <option value="25">WTC</option>
-				  <option value="26">Auditoría y Asuntos Especiales</option>
-				  <option value="27">Contabilidad</option>
-				  <option value="28">Contraloría</option>
-				  <option value="29">Integra</option>
-				  <option value="30">Comunicación Corporativa</option>
-				  <option value="31">Jurídico</option>
-				  <option value="32">Sistemas</option>
+			<c:forEach items="${lista}" var="list">
+				<option value="${list.id}">${list.centroOpeativo}</option>
+			</c:forEach>		  
 			</select>
 			<input type="text" style="background-image:url(/resources/imagenes/centrooperativo.png)" placeholder="Empresa" class="inputredondeado" id="txtEmpresa" name="txtEmpresa"/>
 		</div>

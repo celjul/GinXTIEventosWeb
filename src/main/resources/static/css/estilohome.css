@@ -13,7 +13,7 @@
     background: rgba(37, 63, 91, .8);
     color: #f1f1f1;
     width: 100%;
-    padding: 0px;
+
 }
 
 img
@@ -22,10 +22,4 @@ img
    margin-left:20px;
    margin-top:20px; /*to have the space above the image*/
    margin-bottom:20px; /*to have the space under the image*/
-}
-/* Style the button used to pause/play the video */
-
-#myBtn:hover {
-    background: #ddd;
-    color: black;
 }

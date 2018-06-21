@@ -24,7 +24,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 
 	private DataSource dataSource;
 	   
-	   public void setDataSource(DataSource dataSource) {
+	public void setDataSource(DataSource dataSource) {
 	      this.dataSource = dataSource;
 	   }
 	
@@ -87,7 +87,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 		try {
 			String sql = "select tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , " + 
 					"tblusuarios.fechanacimiento , tblcentrooperativo.nombre as centro , tblcategoriausuario.detalle as categoria, " + 
-					"tblestatususuarios.detalle as estatus from tblusuarios , tblcategoriausuario , tblcentrooperativo,tblestatususuarios where " + 
+					"tblestatususuarios.detalle as estatus , tblusuarios.empresa as empresa from tblusuarios , tblcategoriausuario , tblcentrooperativo,tblestatususuarios where " + 
 					"tblusuarios.idCategoria = tblcategoriausuario.idCategoria and tblusuarios.idCentroOperativo = tblcentrooperativo.idCentroOperativo and " + 
 					"tblusuarios.idEstatus = tblestatususuarios.idEstatus;  ";
 			conn = dataSource.getConnection();
@@ -106,9 +106,19 @@ public class UsuariosDaoImpl implements UsuarioDao {
 				CategoriaUsuario categoria = new CategoriaUsuario();
 				categoria.setDetalle(rs.getString("categoria"));
 				usuario.setCategoria(categoria);
+				if(!categoria.getDetalle().equals("Cliente")) {
 				CentroOperativo centro = new CentroOperativo();
 				centro.setCentroOpeativo(rs.getString("centro"));
 				usuario.setCentro(centro);
+				usuario.setEmpresa(" ");}
+				
+				else {
+					CentroOperativo centro = new CentroOperativo();
+					centro.setCentroOpeativo("");
+					usuario.setCentro(centro);
+					usuario.setEmpresa(rs.getString("empresa"));
+				}
+				
 				lista.add(usuario);
 			}
 			rs.close();
@@ -132,7 +142,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 		Usuario usuario = new Usuario();
 		try {
 			String sql = "select tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , tblusuarios.fechanacimiento , " + 
-					"tblcentrooperativo.nombre as centro ,tblcentrooperativo.idCentroOperativo as idcentro , " + 
+					"tblcentrooperativo.nombre as centro ,tblusuarios.empresa as empresa ,tblcentrooperativo.idCentroOperativo as idcentro , " + 
 					"tblcategoriausuario.detalle as categoria, tblcategoriausuario.idCategoria as idcategoria," + 
 					"tblestatususuarios.detalle as estatus , tblestatususuarios.idEstatus as idEstatus from tblusuarios , tblcategoriausuario , tblcentrooperativo,tblestatususuarios where " + 
 					"tblusuarios.idCategoria = tblcategoriausuario.idCategoria and tblusuarios.idCentroOperativo = tblcentrooperativo.idCentroOperativo and " + 
@@ -149,14 +159,18 @@ public class UsuariosDaoImpl implements UsuarioDao {
 				usuario.setEmail(rs.getString("email"));
 				usuario.setTelefono(rs.getString("telefono"));
 				usuario.setFechaNacimiento(rs.getDate("fechanacimiento"));
-				centro.setCentroOpeativo(rs.getString("centro"));
-				centro.setId(rs.getInt("idcentro"));
 				categoria.setId(rs.getInt("idcategoria"));
 				categoria.setDetalle(rs.getString("categoria"));
 				status.setId(rs.getInt("idEstatus"));
 				status.setDetalle(rs.getString("estatus"));
+				usuario.setEmpresa(" ");
+				centro.setCentroOpeativo(rs.getString("centro"));
+				centro.setId(rs.getInt("idcentro"));
 				usuario.setCentro(centro);
 				usuario.setCategoria(categoria);
+				if(usuario.getCategoria().getId()==2) {
+					usuario.setEmpresa(rs.getString("empresa"));
+				}
 				usuario.setEstatus(status);
 			}
 			
@@ -172,5 +186,29 @@ public class UsuariosDaoImpl implements UsuarioDao {
 	}		
 		return usuario;
 	}
+
+	@Override
+	public void registrarCliente(String nombre, String email, String contrasena, String telefono, Date fechaNacimiento,
+			String empresa, int idCategoria) {
+		Connection conn = null;
+		try {
+			String sql = "insert into tblusuarios(nombre,email,contrasena,telefono,fechanacimiento,empresa,idcategoria,idestatus)"
+					+ " values('"+nombre+"','"+email+"','"+contrasena+"','"+telefono+"','"+fechaNacimiento+"','"+empresa+"',"+idCategoria+",1) ";
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			ps.close();
+			}catch (SQLException e) {
+		throw new RuntimeException(e);
+			
+			}finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}		
+	}
+
 
 }

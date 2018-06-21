@@ -71,10 +71,32 @@ public class EndpointsRest {
 			@RequestParam(value="fechaNacimiento") Date fechaNacimiento,		
 			@RequestParam(value="idCentroOperativo") int idCentroOperativo,		
 			@RequestParam(value="idCategoria") int idCategoria
+			
 			) throws JSONException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
 		usuarioDao.registrar(nombre, email, contrasena, telefono, fechaNacimiento, idCentroOperativo, idCategoria);
+	    Map mapa = new HashMap<>();
+	    mapa.put("Usuario", "hola mundo");
+	    context.close();
+	    return mapa;    
+    }
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTanadirCliente")
+	public Map registrarClientes(
+			@RequestParam(value="nombre") String nombre,
+			@RequestParam(value="email") String email,
+			@RequestParam(value="contrasena") String contrasena,
+			@RequestParam(value="telefono") String telefono,
+			@RequestParam(value="fechaNacimiento") Date fechaNacimiento,		
+			@RequestParam(value="empresa") String empresa,		
+			@RequestParam(value="idCategoria") int idCategoria
+			
+			) throws JSONException {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		usuarioDao = context.getBean(UsuarioDao.class);
+		usuarioDao.registrarCliente(nombre, email, contrasena, telefono, fechaNacimiento, empresa, idCategoria);
 	    Map mapa = new HashMap<>();
 	    mapa.put("Usuario", "hola mundo");
 	    context.close();

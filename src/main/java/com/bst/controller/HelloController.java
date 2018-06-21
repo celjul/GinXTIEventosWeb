@@ -66,11 +66,16 @@ public class HelloController {
     	String fechaNacimientoTemp = request.getParameter("txtnacimiento");
     	String idCentroOperativoTemp = request.getParameter("centrooperativo");
     	String idCategoriaTemp = request.getParameter("txtcategoria");
+    	String empresa = request.getParameter("txtEmpresa");
     	Date fechaNacimiento = Date.valueOf(fechaNacimientoTemp);
     	int idCentroOperativo = Integer.valueOf(idCentroOperativoTemp);
     	int idCategoria = Integer.valueOf(idCategoriaTemp);
+    	if(idCategoria==1) {
     	serviciosRest.registrar(nombre, email, contrasena, telefono, fechaNacimiento, idCentroOperativo, idCategoria);  	
-        return "menu";
+    	}else {
+    		serviciosRest.registrarClientes(nombre, email, contrasena, telefono, fechaNacimiento, empresa, idCategoria);
+    	}
+    	return "menu";
     }
     
     @SuppressWarnings("rawtypes")
@@ -91,6 +96,16 @@ public class HelloController {
        	model.addAttribute("usuario",usuario);	
         return "editarusuario";
        }
-
+  /*  
+    @SuppressWarnings("rawtypes")
+   	@GetMapping("/editarUsuario")
+       public String  editarUsuario(Model model,HttpServletRequest request) {
+    	String idUsuario = request.getParameter("idUsuario");
+       	Map mapa = serviciosRest.getUsuario(idUsuario);
+       	Usuario usuario = (Usuario) mapa.get("usuario");
+       	model.addAttribute("usuario",usuario);	
+        return "editarusuario";
+       }
+*/
 
 }

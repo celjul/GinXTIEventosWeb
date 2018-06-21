@@ -21,14 +21,17 @@
 				   <th class="hasinput" style="width: 15%; ">
 				   Telefono
 				   </th>
-				   <th class="hasinput" style="width: 15%;">
+				   <th class="hasinput" style="width: 10%;">
 				   Fecha Nacimiento
 				   </th>				   
-				   <th class="hasinput" style="width: 15%;">
+				   <th class="hasinput" style="width: 10%;">
 				   Tipo de Usuario
 				   </th>
-				   <th class="hasinput" style="width: 15%;">
+				   <th class="hasinput" style="width: 10%;">
 				   Centro Operativo
+				   </th>
+				   <th class="hasinput" style="width: 10%;">
+				   Empresa
 				   </th>
 				   <th class="hasinput" style="width: 10%;">
 				   Editar
@@ -44,6 +47,7 @@
 								<td><label> ${list.fechaNacimiento}</label></td>
 								<td><label> ${list.categoria.detalle}</label></td>
 								<td><label> ${list.centro.centroOpeativo}</label></td>
+								<td><label> ${list.empresa}</label></td>
 								<td >
 									<button> Editar </button>
 									<input hidden="true" type="text"  id="${list.id}"/>

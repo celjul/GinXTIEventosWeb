@@ -7,20 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="text" />
-nombre ${usuario.nombre}
+<form action="updateUsuario">
+<label>Nombre</label>
+<input type="text" value="${usuario.nombre}"/>
+<label>E-mail</label>
+<input type="text" value="${usuario.email}"/>
+<label>Telefono</label>
+<input type="text" value="${usuario.telefono}"/>
+<label>Fecha nacimiento</label>
+<input type="date" value="${usuario.fechaNacimiento}"/>
 <br>
-email ${usuario.email}
+<label>Centro</label>
+<input type="text" value="${usuario.centro.centroOpeativo}"/>
+<label>Categoria</label>
+<input type="text" value="${usuario.categoria.detalle}"/>
+<label>Status</label>
+<input type="text" value="${usuario.estatus.detalle}"/>
+<label>Empresa</label>
+<input type="text" value="${usuario.empresa}"/>
 <br>
-telefono ${usuario.telefono}
-<br>
-fecha nacimiento ${usuario.fechaNacimiento}
-<br>
-centro ${usuario.centro.centroOpeativo }
-<br>
-categoria ${usuario.categoria.detalle }
-<br>
-status ${usuario.estatus.detalle}
-<br>
+<input type="submit" value="Editar" >
+</form>
 </body>
 </html>

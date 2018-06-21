@@ -16,4 +16,8 @@ public interface UsuarioDao {
 	public List getUsuarios();
 	
 	public Usuario getUsuario(String idUsuario);
+	
+	public void registrarCliente(String nombre, String email, String contrasena, String telefono
+			, Date fechaNacimiento, String empresa , int idCategoria);
+	
 }

@@ -1,0 +1,37 @@
+body{
+	background-color:#253E5A
+}
+.contenido{
+	text-align: center;
+	height: 40px;
+}
+.registro{
+	color: #FFFFFF;
+	background-color: #C3D500;
+	width: 20%;
+	border:	 0px;
+	height: 40px;
+	font-size : 20px;
+	border-radius: 20px;
+}
+.inputredondeado{
+  box-sizing: border-box;
+  padding-left: 30px;  
+  font-size: 20px;
+  height:35px;
+  width: 20%;
+  border-top-right-radius:10px;
+  border-bottom-right-radius: 10px;
+  border: 2px solid withe;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.separacion{
+	height:10px;
+}
+.blanco{
+	color: #ffffff; margin-right:10px;
+}
+

@@ -19,6 +19,8 @@ public class Usuario {
 	private CategoriaUsuario categoria;
 	
 	private EstatusUsuario estatus;
+	
+	private String empresa;
 
 	public int getId() {
 		return id;
@@ -82,5 +84,13 @@ public class Usuario {
 
 	public void setEstatus(EstatusUsuario estatus) {
 		this.estatus = estatus;
+	}
+
+	public String getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
 	}
 }

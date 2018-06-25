@@ -215,8 +215,9 @@ public class UsuariosDaoImpl implements UsuarioDao {
 			int categoria, int status, String empresa, String idUsuario) {
 		Connection conn = null;
 		try {
-			String sql = "update tblusuarios set nombre = '"+nombre+"' email = '"+email+"' telefono='"+telefono+"' fechanacimiento='"+fechaNacimiento+"'"
-					+ "' idCentroOperativo="+centro+"idCategoria="+categoria+"idEstatus="+status+"empresa='"+empresa+"' where idUsuario="+idUsuario;
+			String sql = "update tblusuarios set nombre = '"+nombre+"', email = '"+email+"', telefono='"+telefono+"', fechanacimiento='"+fechaNacimiento+"'"
+					+ ", idCentroOperativo="+centro+" , idCategoria="+categoria+", idEstatus="+status+", empresa='"+empresa+"' where idUsuarios="+idUsuario;
+			System.out.println(sql);
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.executeUpdate();

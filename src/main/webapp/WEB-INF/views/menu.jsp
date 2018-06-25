@@ -13,10 +13,10 @@
 			<div class="divTableRow">
 			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondogaleriamenu.png'); position: inherit;"><img alt="galeria" src="/resources/imagenes/galeriamenu.png" width=100%></div>
 			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondoagendamenu.png'); position: inherit; "><img alt="galeria" src="/resources/imagenes/agendamenu.png" width=100%></div>
-			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondoponentesmenu.png'); position: inherit;"><img alt="galeria" src="/resources/imagenes/PonentesMenu.png" width=100%></div>
+			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondoponentesmenu.png'); position: inherit;"><a href="listaponentes"><img alt="galeria" src="/resources/imagenes/PonentesMenu.png" width=100%></a></div>
 		</div>
 		<div class="divTableRow">
-			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondoexpositoresmenu.png')"><img alt="galeria" src="/resources/imagenes/Expositores.png" width=100%></div>
+			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondoexpositoresmenu.png')"><a href="listaexpositores"><img alt="galeria" src="/resources/imagenes/Expositores.png" width=100%  ></a></div>
 			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondosponsorsmenu.png')"><img alt="galeria" src="/resources/imagenes/Sponsorsmenu.png" width=100%></div>
 			<div class="divTableCell" style="background-image:url('/resources/imagenes/fondosocialmenu.png')"><img alt="galeria" src="/resources/imagenes/socialmediamenu.png" width=100%></div>
 		</div>

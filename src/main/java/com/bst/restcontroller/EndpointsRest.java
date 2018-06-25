@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bst.dao.CentroOperativoDao;
+import com.bst.dao.ExpositoresDao;
+import com.bst.dao.PonentesDao;
 import com.bst.dao.UsuarioDao;
+import com.bst.model.Expositores;
+import com.bst.model.Ponentes;
 import com.bst.model.Usuario;
 
 @RestController
@@ -23,7 +27,13 @@ public class EndpointsRest {
 	 private UsuarioDao usuarioDao;
 	 
 	 @Autowired
+	 private ExpositoresDao expositoresDao;
+	 
+	 @Autowired
 	 private CentroOperativoDao centroOperativoDao;
+	 
+	 @Autowired
+	 private PonentesDao ponentesDao;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTlogin")
@@ -107,8 +117,7 @@ public class EndpointsRest {
 	    Usuario usuario = usuarioDao.getUsuario(idUsuario);
 	    mapa.put("usuario", usuario);
 	    context.close();
-	    return mapa;    
-		
+	    return mapa;    	
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -122,5 +131,142 @@ public class EndpointsRest {
 		usuarioDao = context.getBean(UsuarioDao.class);
 		usuarioDao.editarUsuario(nombre,email,telefono,fechaNacimiento,centro,categoria,status,empresa,idUsuario);
 		 context.close();
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping("/RESTgetlistaexpositores")
+	public Map getListaexpositores() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		expositoresDao = context.getBean(ExpositoresDao.class);
+		 Map mapa = new HashMap<>();
+		 List ponentes = expositoresDao.getExpositores();
+		 mapa.put("expositores", ponentes);
+		 context.close();
+		 return mapa;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTgetExpositor")
+	public Map getExpositorId(@RequestParam(value="idExpositor") String idExpositor) throws JSONException{
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		expositoresDao = context.getBean(ExpositoresDao.class);
+	    Map mapa = new HashMap<>();
+	    Expositores expositor = expositoresDao.getExpositorId(idExpositor);
+	    mapa.put("expositor", expositor);
+	    context.close();
+	    return mapa;    	
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTupdateExpositor")
+	public Map updateExpositor(@RequestParam(value="idExpositor") String idExpositor,
+			@RequestParam(value="nombre") String nombre,
+			@RequestParam(value="facebook") String facebook,
+			@RequestParam(value="google") String google,
+			@RequestParam(value="twitter") String twitter,
+			@RequestParam(value="paginainternet") String paginainternet
+			) throws JSONException{
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		expositoresDao = context.getBean(ExpositoresDao.class);
+	    Map mapa = new HashMap<>();
+	    expositoresDao.updateExpositor(idExpositor,nombre,facebook,google,twitter,paginainternet);
+	    mapa.put("expositor", "200");
+	    context.close();
+	    return mapa;    	
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTaddExpositor")
+	public Map addExpositor(@RequestParam(value="nombre") String nombre, 
+			@RequestParam(value="facebook") String facebook, 
+			@RequestParam(value="google") String google, 
+			@RequestParam(value="twitter") String twitter, 
+			@RequestParam(value="paginainternet") String paginainternet)throws JSONException {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		expositoresDao = context.getBean(ExpositoresDao.class);
+		 Map mapa = new HashMap<>();
+		 expositoresDao.addExpositor(nombre,facebook,google,twitter,paginainternet);
+		    mapa.put("expositor", "200");
+		    context.close();
+		    return mapa;    
+		
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTdeleteExpositor")
+	public Map deleteExpositor(@RequestParam(value="idExpositor") String idExpositor) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		expositoresDao = context.getBean(ExpositoresDao.class);
+		 Map mapa = new HashMap<>();
+		 expositoresDao.deleteExpositor(idExpositor);
+		    mapa.put("expositor", "200");
+		    context.close();
+		    return mapa;    
+		
+		
+	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTgetListaponentes")
+	public Map getListaponentes() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ponentesDao = context.getBean(PonentesDao.class);
+		Map mapa = new HashMap<>();
+		 List ponentes = ponentesDao.getListaPonentes();
+		 mapa.put("ponentes", ponentes);
+		 context.close();
+		 return mapa;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTgetPonenteId")
+	public Map getPonenteId(@RequestParam(value="idPonente")String idPonente) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ponentesDao = context.getBean(PonentesDao.class);
+	    Map mapa = new HashMap<>();
+	    Ponentes ponente = ponentesDao.getPonenteId(idPonente);
+	    mapa.put("ponente", ponente);
+	    context.close();
+	    return mapa;    	
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTupdatePonente")
+	public Map updatePonente(@RequestParam(value="idPonente") String idPonente, 
+			@RequestParam(value="nombre") String nombre, 
+			@RequestParam(value="puesto") String puesto, 
+			@RequestParam(value="semblanza")String semblanza) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ponentesDao = context.getBean(PonentesDao.class);
+	    Map mapa = new HashMap<>();
+	    ponentesDao.updatePonente(idPonente,nombre,puesto,semblanza);
+	    mapa.put("ponente", "200");
+	    context.close();
+	    return mapa;    
+		
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTdeletePonente")
+	public Map deletePonente(@RequestParam(value="idPonente") String idPonente) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ponentesDao = context.getBean(PonentesDao.class);
+		 Map mapa = new HashMap<>();
+		 ponentesDao.deletePonentes(idPonente);
+		 mapa.put("ponente", "200");
+		 context.close();
+		 return mapa;    
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTaddPonente")
+	public Map addPonente(String nombre, String puesto, String semblanza) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ponentesDao = context.getBean(PonentesDao.class);
+		 Map mapa = new HashMap<>();
+		 ponentesDao.addPonente(nombre,puesto,semblanza);
+		    mapa.put("expositor", "200");
+		    context.close();
+		    return mapa;    
+		
 	}
 }

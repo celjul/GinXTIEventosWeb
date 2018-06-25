@@ -14,7 +14,7 @@
 		<div class="divTableCell"><a href="actividades">Conferencias</a></div>
 		<div class="divTableCell"><a href="expositoresadmin">Expositores</a></div>
 		<div class="divTableCell"><a href="usuariosadmin">Asistentes</a></div>
-		<div class="divTableCell"><a href="actividades">Ponentes</a></div>
+		<div class="divTableCell"><a href="ponentesadmin">Ponentes</a></div>
 	</div>
 
 	</div>

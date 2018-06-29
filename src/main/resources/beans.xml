@@ -7,9 +7,9 @@
    <bean id="dataSource" 
       class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name = "driverClassName" value = "com.mysql.jdbc.Driver"/>
-      <property name = "url" value = "jdbc:mysql://127.0.0.1/eventosdb"/>
-      <property name = "username" value = "root"/>
-      <property name = "password" value = "root"/>
+      <property name = "url" value = "jdbc:mysql://104.145.233.100/ginxti"/>
+      <property name = "username" value = "gin"/>
+      <property name = "password" value = "g1N18"/>
    </bean>
 
  <bean id = "usuariosDao" class = "com.bst.dao.impl.UsuariosDaoImpl">

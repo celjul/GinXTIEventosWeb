@@ -24,6 +24,7 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 	      this.dataSource = dataSource;
 	   }
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List getExpositores() {
 		Connection conn = null;

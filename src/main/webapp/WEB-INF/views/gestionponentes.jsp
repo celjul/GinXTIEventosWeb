@@ -18,7 +18,8 @@
 		    </header>
 		    <div class="w3-container">
 		      <hr>
-		      <img src="/resources/imagenes/celular.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+		      <img src="data:image/png;base64,${list.foto}"
+		      class="w3-left w3-margin-right" style="width:100px; height:100px;">
 				 <p>${list.nombre}</p>    
 		     	 <p>${list.puesto}</p>
 		     	 <p>${list.semblanza}</p>	 

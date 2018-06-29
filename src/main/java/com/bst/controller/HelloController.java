@@ -1,10 +1,14 @@
 package com.bst.controller;
 
+import java.sql.Blob;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,6 +76,7 @@ public class HelloController {
     	Date fechaNacimiento = Date.valueOf(fechaNacimientoTemp);
     	int idCentroOperativo = Integer.valueOf(idCentroOperativoTemp);
     	int idCategoria = Integer.valueOf(idCategoriaTemp);
+    	//metervalidacion de existente
     	if(idCategoria==1) {
     	serviciosRest.registrar(nombre, email, contrasena, telefono, fechaNacimiento, idCentroOperativo, idCategoria);  	
     	}else {
@@ -227,13 +232,33 @@ public class HelloController {
    	}
     
 
-    @GetMapping("/addPonente")
+    @PostMapping("/addPonente")
    	public String addPonente(Model model,HttpServletRequest request) {
+    	String bslogo = request.getParameter("bslogo");
+    	String bslogolimpia=bslogo.substring(22);
     	String nombre = request.getParameter("txtnombre");
     	String puesto = request.getParameter("txtpuesto");
     	String semblanza = request.getParameter("txtsemblanza");
-    	serviciosRest.addPonente(nombre,puesto,semblanza);
+    	serviciosRest.addPonente(nombre,puesto,semblanza,bslogolimpia);
     	return "menuadmin";
    	}
     
+    @GetMapping("/hello")
+   	public String hello(Model model) {
+    	return "hello";
+   	}
+    
+    @GetMapping("/test")
+   	public String test(Model model) {
+    	LlamadasController llamar = new LlamadasController();
+    	try {
+			llamar.sendGet();
+			llamar.sendPost();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    
+    	return "hello";
+   	}
 }

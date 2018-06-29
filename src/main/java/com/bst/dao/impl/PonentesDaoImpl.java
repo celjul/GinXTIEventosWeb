@@ -24,6 +24,7 @@ public class PonentesDaoImpl implements PonentesDao{
 	   }
 	
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List getListaPonentes() {
 		Connection conn = null;
@@ -36,7 +37,7 @@ public class PonentesDaoImpl implements PonentesDao{
 			while(rs.next()) {
 				Ponentes ponente = new Ponentes();
 				ponente.setId(rs.getInt("id"));
-				ponente.setFoto(rs.getBlob("FOTO"));
+				ponente.setFoto(rs.getString("FOTO"));
 				ponente.setNombre(rs.getString("NOMBRE"));
 				ponente.setPuesto(rs.getString("PUESTO"));
 				ponente.setSemblanza(rs.getString("SEMBLANZA"));
@@ -71,7 +72,7 @@ public class PonentesDaoImpl implements PonentesDao{
 	while(rs.next()) {
 		
 		ponente.setId(rs.getInt("id"));
-		ponente.setFoto(rs.getBlob("FOTO"));
+		ponente.setFoto(rs.getString("FOTO"));
 		ponente.setNombre(rs.getString("NOMBRE"));
 		ponente.setPuesto(rs.getString("PUESTO"));
 		ponente.setSemblanza(rs.getString("SEMBLANZA"));
@@ -142,10 +143,10 @@ public class PonentesDaoImpl implements PonentesDao{
 
 
 	@Override
-	public void addPonente(String nombre, String puesto, String semblanza) {
+	public void addPonente(String nombre, String puesto, String semblanza, String b) {
 		Connection conn = null;
 		try {
-		String sql = "insert into ponentes(nombre,puesto,semblanza) values('"+nombre+"','"+puesto+"','"+semblanza+"')";
+		String sql = "insert into ponentes(nombre,puesto,semblanza,foto) values('"+nombre+"','"+puesto+"','"+semblanza+"','"+b+"')";
 		conn = dataSource.getConnection();
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.executeUpdate();

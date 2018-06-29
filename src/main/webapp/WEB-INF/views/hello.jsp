@@ -9,8 +9,7 @@
 <body>
   <h1>Spring Boot - MVC web application example</h1>
   <hr>
-
-  <h2>Your name is ${name}</h2>
+	<form action="test"><input type="submit"/></form>
 
 </body>
 </html>

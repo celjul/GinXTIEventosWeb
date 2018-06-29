@@ -1,5 +1,6 @@
 package com.bst.restcontroller;
 
+import java.sql.Blob;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -259,11 +260,11 @@ public class EndpointsRest {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTaddPonente")
-	public Map addPonente(String nombre, String puesto, String semblanza) {
+	public Map addPonente(String nombre, String puesto, String semblanza,String b) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		ponentesDao = context.getBean(PonentesDao.class);
 		 Map mapa = new HashMap<>();
-		 ponentesDao.addPonente(nombre,puesto,semblanza);
+		 ponentesDao.addPonente(nombre,puesto,semblanza,b);
 		    mapa.put("expositor", "200");
 		    context.close();
 		    return mapa;    

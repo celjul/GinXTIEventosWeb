@@ -5,7 +5,7 @@ import java.sql.Blob;
 public class Ponentes {
 	
 	private int id;
-	private Blob foto;
+	private String foto;
 	private String nombre;
 	private String puesto;
 	private String semblanza;
@@ -16,10 +16,10 @@ public class Ponentes {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Blob getFoto() {
+	public String getFoto() {
 		return foto;
 	}
-	public void setFoto(Blob foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 	public String getNombre() {
@@ -40,4 +40,5 @@ public class Ponentes {
 	public void setSemblanza(String semblanza) {
 		this.semblanza = semblanza;
 	}
+
 }

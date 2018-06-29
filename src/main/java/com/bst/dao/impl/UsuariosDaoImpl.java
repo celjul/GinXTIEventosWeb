@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
+import com.bst.controller.LlamadasController;
 import com.bst.dao.UsuarioDao;
 import com.bst.model.CategoriaUsuario;
 import com.bst.model.CentroOperativo;
@@ -28,20 +29,27 @@ public class UsuariosDaoImpl implements UsuarioDao {
 	      this.dataSource = dataSource;
 	   }
 	
+	
 	@Override
 	public void registrar(String nombre, String email, String contrasena, String telefono
 			, Date fechaNacimiento, int idCentroOperativo , int idCategoria) {
 		Connection conn = null;
+		int numero = (int) (Math.random() * 9999) + 1000;
 		try {
-			String sql = "insert into tblusuarios(nombre,email,contrasena,telefono,fechanacimiento,idcentrooperativo,idcategoria,idestatus)"
-					+ " values('"+nombre+"','"+email+"','"+contrasena+"','"+telefono+"','"+fechaNacimiento+"',"+idCentroOperativo+","+idCategoria+",1) ";
+			String sql = "insert into tblusuarios(nombre,email,contrasena,codigo,telefono,fechanacimiento,idcentrooperativo,idcategoria,idestatus)"
+					+ " values('"+nombre+"','"+email+"','"+contrasena+"',"+numero+",'"+telefono+"','"+fechaNacimiento+"',"+idCentroOperativo+","+idCategoria+",1) ";
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.executeUpdate();
 			ps.close();
+			LlamadasController llamada = new LlamadasController();
+			llamada.sendMensajeRegistro(nombre,telefono,numero);
 			}catch (SQLException e) {
 		throw new RuntimeException(e);
 			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}finally {
 			if (conn != null) {
 				try {
@@ -191,16 +199,22 @@ public class UsuariosDaoImpl implements UsuarioDao {
 	public void registrarCliente(String nombre, String email, String contrasena, String telefono, Date fechaNacimiento,
 			String empresa, int idCategoria) {
 		Connection conn = null;
+		int numero = (int) (Math.random() * 9999) + 1000;
 		try {
-			String sql = "insert into tblusuarios(nombre,email,contrasena,telefono,fechanacimiento,empresa,idcategoria,idestatus)"
-					+ " values('"+nombre+"','"+email+"','"+contrasena+"','"+telefono+"','"+fechaNacimiento+"','"+empresa+"',"+idCategoria+",1) ";
+			String sql = "insert into tblusuarios(nombre,email,codigo,contrasena,telefono,fechanacimiento,empresa,idcategoria,idestatus)"
+					+ " values('"+nombre+"','"+email+"',"+numero+",'"+contrasena+"','"+telefono+"','"+fechaNacimiento+"','"+empresa+"',"+idCategoria+",1) ";
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.executeUpdate();
 			ps.close();
+			LlamadasController llamada = new LlamadasController();
+			llamada.sendMensajeRegistro(nombre,telefono,numero);
 			}catch (SQLException e) {
 		throw new RuntimeException(e);
 			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}finally {
 			if (conn != null) {
 				try {

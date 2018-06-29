@@ -7,14 +7,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="addPonente">
+<form action="addPonente" method="POST">
 <label>Nombre</label>
 <input name="txtnombre" id="txtnombre" type="text" />
 <label>Puesto</label>
 <input name="txtpuesto" id="txtpuesto" type="text" />
 <label>Semblanza</label>
 <input name="txtsemblanza" id="txtsemblanza" type="text" />
+<label>Logo</label>
+<input id="inp" type='file'/>
+<input hidden="hidden" name="bslogo" id="bslogo" value=""/>
 <input type="submit" value="Agregar" >
 </form>
+<script type="text/javascript">
+function readFile() {
+	  
+	  if (this.files && this.files[0]) {
+	    
+	    var FR= new FileReader();
+	    
+	    FR.addEventListener("load", function(e) {
+	    	  var id= e.target.result;
+	      document.getElementById("bslogo").value = id
+	    }); 
+	    
+	    FR.readAsDataURL( this.files[0] );
+	  }
+	  
+	}
+
+	document.getElementById("inp").addEventListener("change", readFile);
+</script>
 </body>
 </html>

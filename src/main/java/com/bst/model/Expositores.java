@@ -5,7 +5,7 @@ import java.sql.Blob;
 public class Expositores {
 	
 	private int id;
-	private Blob logo;
+	private String logo;
 	private String nombre;
 	private String paginainternet;
 	private String twitter;
@@ -17,10 +17,10 @@ public class Expositores {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Blob getLogo() {
+	public String getLogo() {
 		return logo;
 	}
-	public void setLogo(Blob logo) {
+	public void setLogo(String logo) {
 		this.logo = logo;
 	}
 	public String getNombre() {

@@ -1,6 +1,5 @@
 package com.bst.restcontroller;
 
-import java.sql.Blob;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +41,18 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
 		int categoria = usuarioDao.logeo(email, codigo);
+	    Map mapa = new HashMap<>();
+	    mapa.put("Categoria", categoria);
+	    context.close();
+	    return mapa;    
+    }
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTloginapp")
+	public Map loginapp(@RequestParam(value="email") String email,@RequestParam(value="codigo") String codigo) throws JSONException {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		usuarioDao = context.getBean(UsuarioDao.class);
+		int categoria = usuarioDao.logeoapp(email, codigo);
 	    Map mapa = new HashMap<>();
 	    mapa.put("Categoria", categoria);
 	    context.close();
@@ -182,11 +193,12 @@ public class EndpointsRest {
 			@RequestParam(value="facebook") String facebook, 
 			@RequestParam(value="google") String google, 
 			@RequestParam(value="twitter") String twitter, 
-			@RequestParam(value="paginainternet") String paginainternet)throws JSONException {
+			@RequestParam(value="paginainternet") String paginainternet,
+			@RequestParam(value="logo")String b)throws JSONException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		expositoresDao = context.getBean(ExpositoresDao.class);
 		 Map mapa = new HashMap<>();
-		 expositoresDao.addExpositor(nombre,facebook,google,twitter,paginainternet);
+		 expositoresDao.addExpositor(nombre,facebook,google,twitter,paginainternet,b);
 		    mapa.put("expositor", "200");
 		    context.close();
 		    return mapa;    

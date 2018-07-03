@@ -166,14 +166,16 @@ public class HelloController {
     	return "agregarexpositor";
    	}
     
-    @GetMapping("/addExpositor")
+    @PostMapping("/addExpositor")
    	public String addExpositor(Model model,HttpServletRequest request) {
     	String nombre = request.getParameter("txtnombre");
     	String facebook = request.getParameter("txtfacebook");
     	String google = request.getParameter("txtgoogle");
     	String twitter = request.getParameter("txttwitter");
     	String paginainternet = request.getParameter("txtpaginainternet");
-    	serviciosRest.addExpositor(nombre,facebook,google,twitter,paginainternet);
+    	String bslogo = request.getParameter("bslogo");
+    	String bslogolimpia=bslogo.substring(22);
+    	serviciosRest.addExpositor(nombre,facebook,google,twitter,paginainternet,bslogolimpia);
     	return "menuadmin";
    	}
     
@@ -189,7 +191,17 @@ public class HelloController {
     	Map mapa = serviciosRest.getListaponentes();
     	List lista = (List) mapa.get("ponentes");
     	model.addAttribute("lista", lista);
-    	return "listaponentes";
+    	return "ponentesusuario";
+   	}
+    
+    
+    @GetMapping("/revisarPonente")
+   	public String revisarPonente(Model model,HttpServletRequest request) {
+    	String idPonente = request.getParameter("idPonente");
+    	Map mapa = serviciosRest.getPonenteId(idPonente);
+    	Ponentes ponente = (Ponentes) mapa.get("ponente");
+    	model.addAttribute("ponente", ponente);
+    	return "ponentedetalle";
    	}
     
     @GetMapping("/ponentesadmin")
@@ -231,7 +243,6 @@ public class HelloController {
     	return "agregarPonentes";
    	}
     
-
     @PostMapping("/addPonente")
    	public String addPonente(Model model,HttpServletRequest request) {
     	String bslogo = request.getParameter("bslogo");

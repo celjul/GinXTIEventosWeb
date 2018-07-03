@@ -19,11 +19,11 @@
 		    </header>
 		    <div class="w3-container">
 		      <hr>
-		      <img src="/resources/imagenes/celular.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+		      <img src="data:image/png;base64,${list.logo}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
 				 <p><a href="${list.paginainternet}">${list.paginainternet}</a> </p>    
-		     	 <p><a href="${list.twitter}"><img src="/resources/imagenes/twitter.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p>
-		     	 <p><a href="${list.facebook}"><img src="/resources/imagenes/facebook.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p>
-		     	 <p><a href="${list.google}"><img src="/resources/imagenes/google.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p><br>
+		     	 <p><a href="${list.twitter}"><img src="resources/imagenes/twitter.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p>
+		     	 <p><a href="${list.facebook}"><img src="resources/imagenes/facebook.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p>
+		     	 <p><a href="${list.google}"><img src="resources/imagenes/google.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p><br>
     			 
     		</div>	  
 		</div>

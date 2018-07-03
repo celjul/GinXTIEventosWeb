@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</head>
-<body>
-<c:forEach items="${lista}" var="list">
-<div class="row" style="background-color:#ccc;height:40px"></div>
-<div class="row">
-	<div class="column" style="background-color:#aaa" >
-  		<div class="w3-container">
-		    <header class="w3-container">
-		      <h3>${list.nombre}</h3>
-		    </header>
-		    <div class="w3-container">
-		      <hr>
-		      <img src="/resources/imagenes/celular.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-				 <p><a href="${list.paginainternet}">${list.paginainternet}</a> </p>    
-		     	 <p><a href="${list.twitter}"><img src="/resources/imagenes/twitter.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p>
-		     	 <p><a href="${list.facebook}"><img src="/resources/imagenes/facebook.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p>
-		     	 <p><a href="${list.google}"><img src="/resources/imagenes/google.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:30px"></a></p><br>
-    		</div>	  
-		</div>
-	</div>
-</div>
-</c:forEach>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Iconos -->
+    <script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+     <!-- Estilos Personalizados de Bootstrap -->
+    <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
+
+    <title>EXPOSITORES | CONGERSO DIGITAL</title>
+    <style>
+      .img-expositores{
+        border-radius: 1%;
+        border: 2px #ffffff solid;
+        width: 100px;
+      }
+    </style>
+  </head>
+<body class="fondo-patro">
+	<div class="container">
+		<header>
+			<ul class="nav justify-content-end">
+			  <li class="nav-item">
+			    <a class="nav-link disabled" href="#">
+			    	<h2>Expositores <ion-icon name="contacts"></ion-icon></h2>
+			    </a>
+			  </li>
+			</ul>
+		</header>
+    <div class="row lineauno"></div>
+    <div class="row">
+    <c:forEach items="${lista}" var="list">
+      <div class="col align-self-center">
+        <a href="${list.paginainternet}">
+          <div class="col">
+          <img class="img-expositores" src="data:image/png;base64,${list.logo}" alt="...">
+          </div>
+        </a>
+      </div>
+      </c:forEach>
+    </div>
+  </div>
 </body>
 </html>

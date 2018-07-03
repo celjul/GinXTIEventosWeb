@@ -37,7 +37,7 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 			while(rs.next()) {
 				Expositores expositor = new Expositores();
 				expositor.setId(rs.getInt("id"));
-				expositor.setLogo(rs.getBlob("LOGO"));
+				expositor.setLogo(rs.getString("LOGO"));
 				expositor.setNombre(rs.getString("NOMBRE"));
 				expositor.setPaginainternet(rs.getString("PAGINA_INTERNET"));
 				expositor.setTwitter(rs.getString("twitter"));
@@ -74,7 +74,7 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 			while(rs.next()) {
 				
 				expositor.setId(rs.getInt("id"));
-				expositor.setLogo(rs.getBlob("LOGO"));
+				expositor.setLogo(rs.getString("LOGO"));
 				expositor.setNombre(rs.getString("NOMBRE"));
 				expositor.setPaginainternet(rs.getString("PAGINA_INTERNET"));
 				expositor.setTwitter(rs.getString("twitter"));
@@ -123,10 +123,10 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 	}}
 
 	@Override
-	public void addExpositor(String nombre, String facebook, String google, String twitter, String paginainternet) {
+	public void addExpositor(String nombre, String facebook, String google, String twitter, String paginainternet,String b) {
 		Connection conn = null;
 		try {
-			String sql = "insert into expositores(nombre,facebook,google,twitter,PAGINA_INTERNET) values('"+nombre+"','"+facebook+"','"+google+"','"+twitter+"','"+paginainternet+"')";
+			String sql = "insert into expositores(nombre,facebook,google,twitter,PAGINA_INTERNET,LOGO) values('"+nombre+"','"+facebook+"','"+google+"','"+twitter+"','"+paginainternet+"','"+b+"')";
 			conn = dataSource.getConnection();
 			System.out.println(sql);
 			PreparedStatement ps = conn.prepareStatement(sql);

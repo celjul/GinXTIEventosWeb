@@ -1,33 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-</head>
-<body>
-<div><form id="agregarPonente" name="agregarPonente" action="agregarPonente"><input type="submit" value="+Agregar"/></form></div>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Iconos -->
+    <script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+     <!-- Estilos Personalizados de Bootstrap -->
+    <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
+
+    <title>PONENTES | CONGERSO DIGITAL</title>
+  </head>
+<body class="fondo-ponentes">
+<form id="agregarPonente" name="agregarPonente" action="agregarPonente"><input type="submit" value="+Agregar"/></form>
+	<div class="container">
+		<header>
+			<ul class="nav justify-content-end">
+			  <li class="nav-item">
+			    <a class="nav-link disabled" href="#">
+			    	<h2>Ponentes <ion-icon name="people"></ion-icon></h2>
+			    </a>
+			  </li>
+			</ul>
+		</header>
+    <div class="row lineauno"></div>
+    <div class="row">
+
+     
+      
 <c:forEach items="${lista}" var="list">
-<div class="row" style="background-color:#ccc;height:40px"></div>
-<div class="row">
-	<div class="column" style="background-color:#aaa" >
-  		<div class="w3-container">
-		    <header class="w3-container">
-		      <h3><button>Editar/Eliminar</button> <input type="hidden" id="${list.id}" name="${list.id}"/>${list.nombre} </h3> 
-		    </header>
-		    <div class="w3-container">
-		      <hr>
-		      <img src="data:image/png;base64,${list.foto}"
-		      class="w3-left w3-margin-right" style="width:100px; height:100px;">
-				 <p>${list.nombre}</p>    
-		     	 <p>${list.puesto}</p>
-		     	 <p>${list.semblanza}</p>	 
-    		</div>	  
-		</div>
-	</div>
-</div>
+<div class="col-12 col-md-4 align-self-center">
+        
+          <div class="col">
+          <a href="ponentetres.html">
+            <img class="img-ponente" src="data:image/png;base64,${list.foto}" alt="...">
+            <h3 class="nombre-uno">${list.nombre}</h3>
+            <h3 class="nombre-dos">${list.puesto}</h3></a>
+            <button>Editar/Eliminar</button>
+            <input type="hidden" id="${list.id}" name="${list.id}"/>
+          </div>
+        
+      </div>
 </c:forEach>
+      
+    </div>
+  </div>
+
 <form action="editarPonente" id="editarPonente" name="editarPonente" >
 <input type="hidden" name="idPonente" id="idPonente">
 </form>

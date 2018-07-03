@@ -87,6 +87,34 @@ public class UsuariosDaoImpl implements UsuarioDao {
 		return a;
 	}
 
+	@Override
+	public int logeoapp(String email, String codigo) {
+		Connection conn = null;
+		int a=0;
+		try {
+			String sql = "select idCategoria from tblusuarios where email = '"+email+"' and codigo = '"+codigo+"' ";
+			conn = dataSource.getConnection();
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if(rs.first()) {
+				a = rs.getInt("idCategoria");
+			}
+			rs.close();
+			ps.close();
+			}catch (SQLException e) {
+		throw new RuntimeException(e);
+			
+			}finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}		
+		return a;
+	}
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List getUsuarios() {

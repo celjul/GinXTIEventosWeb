@@ -21,4 +21,7 @@ public interface UsuarioDao {
 			, Date fechaNacimiento, String empresa , int idCategoria);
 	
 	public void editarUsuario(String nombre, String email, String telefono, Date fechaNacimiento, String centro, int categoria, int status, String empresa, String idUsuario);
+	
+	public int logeoapp(String email, String codigo);
+
 }

@@ -13,7 +13,7 @@ public interface ExpositoresDao {
 	public void updateExpositor(String idExpositor, String nombre, String facebook, String google,
 			String twitter, String paginainternet);
 
-	public void addExpositor(String nombre, String facebook, String google, String twitter, String paginainternet);
+	public void addExpositor(String nombre, String facebook, String google, String twitter, String paginainternet,String b);
 
 	void deleteExpositor(String idExpositor);
 

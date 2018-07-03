@@ -17,7 +17,7 @@ public class LlamadasController{
 // HTTP GET request
 public void sendGet() throws Exception {
 
-	String url = "http://wscproyecto.dynalias.net/api/query_incoming_sms?flag=read";
+	String url = "http://10.1.14.249/api/query_incoming_sms?flag=read";
 	
 	URL obj = new URL(url);
 	HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -68,10 +68,10 @@ public void sendPost() throws Exception {
 	objeto.put("param", arreglo);
 	objeto.put("port", 0);
 	System.out.println("prueba"+objeto.toString());
-	String loginPassword = "GINXTI"+ ":" + "61Nx71";
+	String loginPassword = "vitelso"+ ":" + "v173150";
 	String encoded = new Base64().encodeToString(loginPassword.getBytes());
 	System.out.println(encoded);
-	URL url = new URL("http://wscproyecto.dynalias.net/api/send_sms");
+	URL url = new URL("http://10.1.14.249/api/send_sms");
 	
 	HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -125,10 +125,10 @@ public void sendMensajeRegistro(String nombre, String telefono,int numero) throw
 	objeto.put("param", arreglo);
 	objeto.put("port", 0);
 	System.out.println("prueba"+objeto.toString());
-	String loginPassword = "GINXTI"+ ":" + "61Nx71";
+	String loginPassword = "vitelso"+ ":" + "v173150";
 	String encoded = new Base64().encodeToString(loginPassword.getBytes());
 	System.out.println(encoded);
-	URL url = new URL("http://wscproyecto.dynalias.net/api/send_sms");
+	URL url = new URL("http://10.1.14.249/api/send_sms");
 	
 	HttpURLConnection con = (HttpURLConnection) url.openConnection();
 

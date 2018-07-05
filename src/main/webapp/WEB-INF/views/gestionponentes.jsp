@@ -39,10 +39,10 @@
 <div class="col-12 col-md-4 align-self-center">
         
           <div class="col">
-          <a href="ponentetres.html">
+ 
             <img class="img-ponente" src="data:image/png;base64,${list.foto}" alt="...">
             <h3 class="nombre-uno">${list.nombre}</h3>
-            <h3 class="nombre-dos">${list.puesto}</h3></a>
+            <h3 class="nombre-dos">${list.puesto}</h3>
             <button>Editar/Eliminar</button>
             <input type="hidden" id="${list.id}" name="${list.id}"/>
           </div>

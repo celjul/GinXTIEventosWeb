@@ -13,36 +13,45 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
-
     <title>CONGERSO DIGITAL</title>
+    <style>
+    	video{
+    	min-width: 100%;
+		  min-height: 100%;
+		  width: auto;
+		  height: auto;
+		 
+		  position: fixed;    
+		  top: 50%;
+		  left: 50%;
+		  transform: translateX(-50%) translateY(-50%); 
+		 
+		  z-index: -100;
+		 
+		  background-size: cover;
+    	}
+    </style>
   </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<video autoplay muted loop id="myVideo">
-			  <source src="resources/videos/videoindex.mp4" type="video/mp4">
-			</video>
+	<video autoplay muted loop id="myVideo" class="full_screen">
+	  <source src="resources/videos/videoindex.mp4" type="video/mp4">
+	</video>
+	<footer class="row inicio">
+		<div class="col oculto"></div>
+		<div class="col"></div>
+		<div class="col-auto">
+			<a href="login" onMouseOver="cambiar();" onMouseOut="volver();">
+		  		<img class="img-fluid btn-img-index" id="btn_imagen1" src="resources/imagenes/PortalCongreso-10.png">
+		  	</a>
 		</div>
-		
-		<div class="inicio">
-			<div class="row col">
-				<div class="col-2 col-md-2 col-sm-6"></div>
-				<div class="col-2 col-md-2 col-sm-6"></div>
-				<div class="col-auto col-md-2 col-sm-6">
-					<a href="login.html" onMouseOver="cambiar();" onMouseOut="volver();">
-				  		<img class="btn-img-index" id="btn_imagen1" src="resources/imagenes/PortalCongreso-10.png">
-				  	</a>
-				</div>
-				<div class="col-auto col-md-2 col-sm-6">
-					<a href="registro.html" onMouseOver="cambiardos();" onMouseOut="volverdos()";>
-				  		<img class="btn-img-index" id="btn_imagen2" src="resources/imagenes/PortalCongreso-11.png">
-				  	</a>
-				</div>
-				<div class="col-2 col-md-2 col-sm-6"></div>
-				<div class="col-2 col-md-2 col-sm-6"></div>
-			</div>
+		<div class="col-auto">
+			<a href="registro" onMouseOver="cambiardos();" onMouseOut="volverdos()";>
+		  		<img class="img-fluid btn-img-index" id="btn_imagen2" src="resources/imagenes/PortalCongreso-11.png">
+		  	</a>
 		</div>
-	</div>
+		<div class="col"></div>
+		<div class="col"></div>
+	</footer>
 
 	<script type="text/javascript">
 	 

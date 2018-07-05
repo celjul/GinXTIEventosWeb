@@ -46,6 +46,13 @@
       
     </div>
     <div class="row">
+    <div class="col-6">
+        <div class="opcion-admin">
+          <h2>
+            <a href="conferenciasadmin">Conferencias</a>
+          </h2>
+        </div>
+      </div>
       <div class="col-6">
         <div class="opcion-admin">
           <h2>
@@ -63,7 +70,7 @@
       <div class="col-6">
         <div class="opcion-admin">
           <h2>
-            <a href="actividades">Conferencias</a>
+            <a href="sponsorsadmin">Sponsors</a>
           </h2>
         </div>
       </div>

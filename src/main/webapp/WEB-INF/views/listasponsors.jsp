@@ -15,7 +15,7 @@
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>EXPOSITORES | CONGERSO DIGITAL</title>
+    <title>SPONSORS | CONGERSO DIGITAL</title>
     <style>
       .img-expositores{
         border-radius: 1%;
@@ -35,7 +35,7 @@
 			<ul class="nav justify-content-end">
 			  <li class="nav-item">
 			    <a class="nav-link disabled" href="#">
-			    	<h2>Expositores <ion-icon name="contacts"></ion-icon></h2>
+			    	<h2>Sponsors <ion-icon name="clipboard"></ion-icon></h2>
 			    </a>
 			  </li>
 			</ul>

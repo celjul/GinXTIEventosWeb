@@ -95,10 +95,10 @@ public class PonentesDaoImpl implements PonentesDao{
 
 
 	@Override
-	public void updatePonente(String idPonente, String nombre, String puesto, String semblanza) {
+	public void updatePonente(String idPonente, String nombre, String puesto, String semblanza,String foto) {
 		Connection conn = null;
 		try {
-		String sql = "update ponentes set nombre='"+nombre+"', puesto='"+puesto+"', semblanza='"+semblanza+"' where id="+idPonente;
+		String sql = "update ponentes set nombre='"+nombre+"', puesto='"+puesto+"', semblanza='"+semblanza+"',foto='"+foto+"' where id="+idPonente;
 		conn = dataSource.getConnection();
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.executeUpdate();

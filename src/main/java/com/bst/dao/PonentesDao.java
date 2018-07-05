@@ -11,7 +11,7 @@ public interface PonentesDao {
 
 	public Ponentes getPonenteId(String idPonente);
 
-	public void updatePonente(String idPonente, String nombre, String puesto, String semblanza);
+	public void updatePonente(String idPonente, String nombre, String puesto, String semblanza,String foto);
 
 	public void deletePonentes(String idPonente);
 

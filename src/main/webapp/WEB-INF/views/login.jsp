@@ -25,7 +25,7 @@
 				</div>
 				<form action="logeo" method="post">
 				  <div class="form-group">
-				    <input type="text" name="txtemail" id="txtemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NOMBRE">
+				    <input type="text" name="txtemail" id="txtemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="CORREO ELECTRONICO">
 				  </div>
 				  <div class="form-group">
 				    <input type="password" name="txtcodigo" id="txtcodigo" class="form-control" id="exampleInputPassword1" placeholder="CONTRASEÑA">

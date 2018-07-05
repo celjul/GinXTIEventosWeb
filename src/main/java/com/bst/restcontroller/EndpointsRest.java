@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bst.dao.AgendaDao;
 import com.bst.dao.CentroOperativoDao;
 import com.bst.dao.ExpositoresDao;
 import com.bst.dao.PonentesDao;
+import com.bst.dao.SponsorsDao;
 import com.bst.dao.UsuarioDao;
+import com.bst.model.Agenda;
 import com.bst.model.Expositores;
 import com.bst.model.Ponentes;
+import com.bst.model.Sponsors;
 import com.bst.model.Usuario;
 
 @RestController
@@ -34,6 +38,12 @@ public class EndpointsRest {
 	 
 	 @Autowired
 	 private PonentesDao ponentesDao;
+	 
+	 @Autowired
+	 private SponsorsDao sponsorsDao;
+	 
+	 @Autowired
+	 private AgendaDao agendaDao;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTlogin")
@@ -176,12 +186,13 @@ public class EndpointsRest {
 			@RequestParam(value="facebook") String facebook,
 			@RequestParam(value="google") String google,
 			@RequestParam(value="twitter") String twitter,
-			@RequestParam(value="paginainternet") String paginainternet
+			@RequestParam(value="paginainternet") String paginainternet,
+			@RequestParam(value="logo") String logo
 			) throws JSONException{
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		expositoresDao = context.getBean(ExpositoresDao.class);
 	    Map mapa = new HashMap<>();
-	    expositoresDao.updateExpositor(idExpositor,nombre,facebook,google,twitter,paginainternet);
+	    expositoresDao.updateExpositor(idExpositor,nombre,facebook,google,twitter,paginainternet,logo);
 	    mapa.put("expositor", "200");
 	    context.close();
 	    return mapa;    	
@@ -247,11 +258,13 @@ public class EndpointsRest {
 	public Map updatePonente(@RequestParam(value="idPonente") String idPonente, 
 			@RequestParam(value="nombre") String nombre, 
 			@RequestParam(value="puesto") String puesto, 
-			@RequestParam(value="semblanza")String semblanza) {
+			@RequestParam(value="semblanza")String semblanza,
+			@RequestParam(value="foto")String foto
+			) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		ponentesDao = context.getBean(PonentesDao.class);
 	    Map mapa = new HashMap<>();
-	    ponentesDao.updatePonente(idPonente,nombre,puesto,semblanza);
+	    ponentesDao.updatePonente(idPonente,nombre,puesto,semblanza,foto);
 	    mapa.put("ponente", "200");
 	    context.close();
 	    return mapa;    
@@ -282,4 +295,138 @@ public class EndpointsRest {
 		    return mapa;    
 		
 	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping("/RESTgetListasponsors")
+	public Map getListasponsors() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		sponsorsDao = context.getBean(SponsorsDao.class);
+		 Map mapa = new HashMap<>();
+		 List sponsors = sponsorsDao.getSponsors();
+		 mapa.put("sponsors", sponsors);
+		 context.close();
+		 return mapa;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTaddSponsor")
+	public Map addSponsor(@RequestParam(value="nombre") String nombre, 
+			@RequestParam(value="facebook") String facebook, 
+			@RequestParam(value="google") String google, 
+			@RequestParam(value="twitter") String twitter, 
+			@RequestParam(value="paginainternet") String paginainternet,
+			@RequestParam(value="logo")String b)throws JSONException {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		sponsorsDao = context.getBean(SponsorsDao.class);
+		 Map mapa = new HashMap<>();
+		 sponsorsDao.addSponsors(nombre, facebook, google, twitter, paginainternet, b);
+		    mapa.put("expositor", "200");
+		    context.close();
+		    return mapa;    
+		
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTupdateSponsor")
+	public Map updateSponsor(@RequestParam(value="idSponsors") String idSponsors,
+			@RequestParam(value="nombre") String nombre,
+			@RequestParam(value="facebook") String facebook,
+			@RequestParam(value="google") String google,
+			@RequestParam(value="twitter") String twitter,
+			@RequestParam(value="paginainternet") String paginainternet,
+			@RequestParam(value="logo") String logo
+			) throws JSONException{
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		sponsorsDao = context.getBean(SponsorsDao.class);
+	    Map mapa = new HashMap<>();
+	    sponsorsDao.updateSponsors(idSponsors, nombre, facebook, google, twitter, paginainternet, logo);
+	    mapa.put("expositor", "200");
+	    context.close();
+	    return mapa;    	
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTdeleteSponsor")
+	public Map deleteSponsor(@RequestParam(value="idSponsors") String idSponsors) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		sponsorsDao = context.getBean(SponsorsDao.class);
+		 Map mapa = new HashMap<>();
+		 sponsorsDao.deleteSponsors(idSponsors);
+		    mapa.put("expositor", "200");
+		    context.close();
+		    return mapa;    
+		
+		
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/RESTgetSponsor")
+	public Map getSponsorId(@RequestParam(value="idSponsor") String idSponsor) throws JSONException{
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		sponsorsDao = context.getBean(SponsorsDao.class);
+	    Map mapa = new HashMap<>();
+	    Sponsors sponsor = sponsorsDao.getSponsorsId(idSponsor);
+	    mapa.put("sponsor", sponsor);
+	    context.close();
+	    return mapa;    	
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping("/RESTgetAgenda")
+	public Map getAgenda(@RequestParam(value="idDia") String idDia) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		agendaDao = context.getBean(AgendaDao.class);
+		 Map mapa = new HashMap<>();
+		 List agenda = agendaDao.getAgenda(idDia);
+		 mapa.put("agenda", agenda);
+		 context.close();
+		 return mapa;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping("/RESTaddEvento")
+	public Map addEvento(@RequestParam(value="titulo") String titulo,
+			@RequestParam(value="fechainicio") String fechainicio,@RequestParam(value="horainicio") String horainicio,
+			@RequestParam(value="fechafin") String fechafin,@RequestParam(value="horafin") String horafin,
+			@RequestParam(value="ponentes",required=false) String[] ponentes) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		agendaDao = context.getBean(AgendaDao.class);
+		 Map mapa = new HashMap<>();
+		 agendaDao.addAgenda(titulo,fechainicio,horainicio,fechafin,horafin,ponentes);
+		 mapa.put("agenda", "200");
+		 context.close();
+		 return mapa;
+	}
+
+	@RequestMapping("/RESTgetEvento")
+	public Map getEvento(String id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		agendaDao = context.getBean(AgendaDao.class);
+		 Map mapa = new HashMap<>();
+		 Agenda agenda = agendaDao.getEvento(id);
+		 mapa.put("agenda", agenda);
+		 context.close();
+		 return mapa;
+	}
+
+	@RequestMapping("/RESTdeleteEvento")
+	public void deleteEvento(String id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		agendaDao = context.getBean(AgendaDao.class);
+		agendaDao.deleteEvento(id);
+	}
+
+	@RequestMapping("/RESTupdateAgenda")
+	public void updateAgenda(@RequestParam(value="titulo") String titulo,
+			@RequestParam(value="fechainicio") String fechainicio,@RequestParam(value="horainicio") String horainicio,
+			@RequestParam(value="fechafin") String fechafin,@RequestParam(value="horafin") String horafin,
+			@RequestParam(value="ponentes",required=false) String[] ponentes,@RequestParam(value="id") String id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		agendaDao = context.getBean(AgendaDao.class);
+		 Map mapa = new HashMap<>();
+		 agendaDao.updateAgenda(titulo,fechainicio,horainicio,fechafin,horafin,ponentes,id);
+		 mapa.put("agenda", "200");
+		 context.close();
+	}
+
 }

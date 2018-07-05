@@ -1,5 +1,7 @@
 com\bst\dao\UsuarioDao.class
 com\bst\dao\impl\UsuariosDaoImpl.class
+com\bst\model\Agenda.class
+com\bst\model\Sponsors.class
 com\bst\MainApp.class
 com\bst\controller\LlamadasController.class
 com\bst\model\EstatusUsuario.class
@@ -10,9 +12,13 @@ com\bst\model\CentroOperativo.class
 com\bst\model\Expositores.class
 com\bst\dao\ExpositoresDao.class
 com\bst\dao\CentroOperativoDao.class
+com\bst\dao\SponsorsDao.class
+com\bst\dao\AgendaDao.class
 com\bst\dao\PonentesDao.class
 com\bst\controller\HelloController.class
 com\bst\model\Usuario.class
+com\bst\dao\impl\AgendaDaoImpl.class
+com\bst\dao\impl\SponsorsDaoImpl.class
 com\bst\model\CategoriaUsuario.class
 com\bst\dao\impl\PonentesDaoImpl.class
 com\bst\dao\impl\CentroOperativoDaoImpl.class

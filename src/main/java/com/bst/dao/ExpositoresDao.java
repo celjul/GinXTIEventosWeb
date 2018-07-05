@@ -11,7 +11,7 @@ public interface ExpositoresDao {
 	public Expositores getExpositorId(String idExpositor);
 
 	public void updateExpositor(String idExpositor, String nombre, String facebook, String google,
-			String twitter, String paginainternet);
+			String twitter, String paginainternet,String logo);
 
 	public void addExpositor(String nombre, String facebook, String google, String twitter, String paginainternet,String b);
 

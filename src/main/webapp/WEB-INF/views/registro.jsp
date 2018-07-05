@@ -33,6 +33,22 @@
 				  </div>
 	    		
 				<form  action="addregistro" method="post" id="myForm" name="myForm" style="display: inline-block; width: 100%;">
+				   <div class="d-flex rec-olv">
+				  	<div class="mr-auto p-2">
+				  		<div class="form-check">
+				  			<input  onclick="deshabilitarCheckcolaborador()" type="checkbox" id="chckcolaborador" disabled="disabled" name="chckcolaborador" />  
+							<small><label class="form-check-label" for="colaborador">Colaborador</label></small>
+						</div>
+				  	</div>
+				  	<div class="p-2">
+				  		<div class="form-check">
+				  			<input  onclick="deshabilitarCheck()" type="checkbox" id="chckcliente" checked="checked" name="chckcliente" />
+				  			<small><label class="form-check-label" for="cliente">Cliente</label></small>
+						</div>
+				  	</div>
+				  	<input type="hidden" id="txtcategoria" name="txtcategoria" value="2"/>
+						
+				  </div>
 				  <div class="form-group">
 				    <input type="text" class="form-control" id="txtnombre" name="txtnombre" aria-describedby="emailHelp" placeholder="NOMBRE">
 				  </div>
@@ -55,22 +71,7 @@
 				  <div class="form-group">
 				    <input type="date" class="form-control" id="centroop" id="txtnacimiento" name="txtnacimiento" aria-describedby="emailHelp" placeholder="FECHA NACIMIENTO">
 				  </div>
-				  <div class="d-flex rec-olv">
-				  	<div class="mr-auto p-2">
-				  		<div class="form-check">
-				  			<input  onclick="deshabilitarCheckcolaborador()" type="checkbox" id="chckcolaborador" disabled="disabled" name="chckcolaborador" />  
-							<small><label class="form-check-label" for="colaborador">Colaborador</label></small>
-						</div>
-				  	</div>
-				  	<div class="p-2">
-				  		<div class="form-check">
-				  			<input  onclick="deshabilitarCheck()" type="checkbox" id="chckcliente" checked="checked" name="chckcliente" />
-				  			<small><label class="form-check-label" for="cliente">Cliente</label></small>
-						</div>
-				  	</div>
-				  	<input type="hidden" id="txtcategoria" name="txtcategoria" value="2"/>
-						
-				  </div>
+				 
 				  <button type="submit" class="btn btn-success botonverde">REGISTRARSE</button>
 				</form>
 	    	</span>

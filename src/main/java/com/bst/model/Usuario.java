@@ -21,6 +21,8 @@ public class Usuario {
 	private EstatusUsuario estatus;
 	
 	private String empresa;
+	
+	private int codigo;
 
 	public int getId() {
 		return id;
@@ -92,5 +94,13 @@ public class Usuario {
 
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 }

@@ -11,12 +11,11 @@ import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
-import com.bst.dao.ExpositoresDao;
-import com.bst.model.Expositores;
+import com.bst.dao.SponsorsDao;
+import com.bst.model.Sponsors;
 
-
-@Repository("expositoresDao")
-public class ExpositoresDaoImpl implements ExpositoresDao{
+@Repository("sponsorsDao")
+public class SponsorsDaoImpl implements SponsorsDao{
 
 	private DataSource dataSource;
 	   
@@ -26,24 +25,24 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public List getExpositores() {
+	public List getSponsors() {
 		Connection conn = null;
 		List listaExpositores = new ArrayList();
 		try {
-			String sql = "select * from expositores ";
+			String sql = "select * from sponsors ";
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				Expositores expositor = new Expositores();
-				expositor.setId(rs.getInt("id"));
-				expositor.setLogo(rs.getString("LOGO"));
-				expositor.setNombre(rs.getString("NOMBRE"));
-				expositor.setPaginainternet(rs.getString("PAGINA_INTERNET"));
-				expositor.setTwitter(rs.getString("twitter"));
-				expositor.setFacebook(rs.getString("facebook"));
-				expositor.setGoogle(rs.getString("google"));
-				listaExpositores.add(expositor);
+				Sponsors sponsors = new Sponsors();
+				sponsors.setId(rs.getInt("id"));
+				sponsors.setLogo(rs.getString("LOGO"));
+				sponsors.setNombre(rs.getString("NOMBRE"));
+				sponsors.setPaginainternet(rs.getString("PAGINA_INTERNET"));
+				sponsors.setTwitter(rs.getString("twitter"));
+				sponsors.setFacebook(rs.getString("facebook"));
+				sponsors.setGoogle(rs.getString("google"));
+				listaExpositores.add(sponsors);
 			}
 			rs.close();
 			ps.close();
@@ -63,23 +62,23 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 
 	
 	@Override
-	public Expositores getExpositorId(String idExpositor) {
+	public Sponsors getSponsorsId(String idsponsors) {
 		Connection conn =null;
-		Expositores expositor = new Expositores(); 
+		Sponsors sponsors = new Sponsors(); 
 		try {
-			String sql = "select * from expositores where id =' "+idExpositor+"'";
+			String sql = "select * from sponsors where id =' "+idsponsors+"'";
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				
-				expositor.setId(rs.getInt("id"));
-				expositor.setLogo(rs.getString("LOGO"));
-				expositor.setNombre(rs.getString("NOMBRE"));
-				expositor.setPaginainternet(rs.getString("PAGINA_INTERNET"));
-				expositor.setTwitter(rs.getString("twitter"));
-				expositor.setFacebook(rs.getString("facebook"));
-				expositor.setGoogle(rs.getString("google"));
+				sponsors.setId(rs.getInt("id"));
+				sponsors.setLogo(rs.getString("LOGO"));
+				sponsors.setNombre(rs.getString("NOMBRE"));
+				sponsors.setPaginainternet(rs.getString("PAGINA_INTERNET"));
+				sponsors.setTwitter(rs.getString("twitter"));
+				sponsors.setFacebook(rs.getString("facebook"));
+				sponsors.setGoogle(rs.getString("google"));
 				
 			}
 			rs.close();
@@ -95,16 +94,16 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 		}
 	
 		
-		}return expositor;
+		}return sponsors;
 	}
 
 	@Override
-	public void updateExpositor(String idExpositor, String nombre, String facebook, String google,
+	public void updateSponsors(String idsponsors, String nombre, String facebook, String google,
 			String twitter, String paginainternet,String logo) {
 		Connection conn = null;
 		try {
-			String sql = "update expositores set NOMBRE = '"+nombre+"', facebook='"+facebook+"',"
-					+ " google='"+google+"' , twitter='"+twitter+"' , PAGINA_INTERNET='"+paginainternet+"', LOGO='"+logo+"' where id="+idExpositor+"";
+			String sql = "update sponsors set NOMBRE = '"+nombre+"', facebook='"+facebook+"',"
+					+ " google='"+google+"' , twitter='"+twitter+"' , PAGINA_INTERNET='"+paginainternet+"', LOGO='"+logo+"' where id="+idsponsors+"";
 			conn = dataSource.getConnection();
 			System.out.println(sql);
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -123,10 +122,10 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 	}}
 
 	@Override
-	public void addExpositor(String nombre, String facebook, String google, String twitter, String paginainternet,String b) {
+	public void addSponsors(String nombre, String facebook, String google, String twitter, String paginainternet,String b) {
 		Connection conn = null;
 		try {
-			String sql = "insert into expositores(nombre,facebook,google,twitter,PAGINA_INTERNET,LOGO) values('"+nombre+"','"+facebook+"','"+google+"','"+twitter+"','"+paginainternet+"','"+b+"')";
+			String sql = "insert into sponsors(nombre,facebook,google,twitter,PAGINA_INTERNET,LOGO) values('"+nombre+"','"+facebook+"','"+google+"','"+twitter+"','"+paginainternet+"','"+b+"')";
 			conn = dataSource.getConnection();
 			System.out.println(sql);
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -145,10 +144,10 @@ public class ExpositoresDaoImpl implements ExpositoresDao{
 	}}
 	
 	@Override
-	public void deleteExpositor(String idExpositor) {
+	public void deleteSponsors(String idsponsors) {
 		Connection conn = null;
 		try {
-			String sql = "delete from expositores where id ="+idExpositor;
+			String sql = "delete from sponsors where id ="+idsponsors;
 			conn = dataSource.getConnection();
 			System.out.println(sql);
 			PreparedStatement ps = conn.prepareStatement(sql);

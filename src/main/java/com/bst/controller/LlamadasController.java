@@ -108,7 +108,7 @@ public void sendPost() throws Exception {
 public void sendMensajeRegistro(String nombre, String telefono,int numero) throws Exception {
 	
 	JSONObject objeto = new JSONObject();
-	String mensaje ="Gracias por Registrarse "+nombre+" puede descargar la aplicacion para android https://goo.gl/z5iFG2 su codigo de acceso es :"+numero;
+	String mensaje =nombre+" bienvenido a la innovacion tu codigo de acceso es : "+numero+" descargala proximamente";
 	objeto.put("text",mensaje);
 	String numeroenvio = String.valueOf(telefono);
 	JSONObject objeto2 = new JSONObject();
@@ -125,7 +125,7 @@ public void sendMensajeRegistro(String nombre, String telefono,int numero) throw
 	objeto.put("param", arreglo);
 	objeto.put("port", 0);
 	System.out.println("prueba"+objeto.toString());
-	String loginPassword = "vitelso"+ ":" + "v173150";
+	String loginPassword = "GINXTI"+ ":" + "61nX71";
 	String encoded = new Base64().encodeToString(loginPassword.getBytes());
 	System.out.println(encoded);
 	URL url = new URL("http://10.1.14.249/api/send_sms");

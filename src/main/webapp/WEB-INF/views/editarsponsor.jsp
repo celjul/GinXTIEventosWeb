@@ -7,26 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="updateExpositor" method="POST">
+<form action="updateSponsor" method="POST">
 <label>Nombre</label>
-<input name="txtnombre" id="txtnombre" type="text" value="${expositor.nombre}"/>
-<input hidden="hidden" name="idexpositor" id="idexpositor" value="${expositor.id}"/>
+<input name="txtnombre" id="txtnombre" type="text" value="${sponsor.nombre}"/>
+<input hidden="hidden" name="idSponsor" id="idexpositor" value="${sponsor.id}"/>
 <label>facebook</label>
-<input name="txtfacebook" id="txtfacebook" type="text" value="${expositor.facebook}"/>
+<input name="txtfacebook" id="txtfacebook" type="text" value="${sponsor.facebook}"/>
 <label>google</label>
-<input name="txtgoogle" id="txtgoogle" type="text" value="${expositor.google}"/>
+<input name="txtgoogle" id="txtgoogle" type="text" value="${sponsor.google}"/>
 <label>twitter</label>
-<input name="txttwitter" id="txttwitter" type="text" value="${expositor.twitter}"/>
+<input name="txttwitter" id="txttwitter" type="text" value="${sponsor.twitter}"/>
 <br>
 <label>Pagina Internet</label>
-<input name="txtpaginainternet" id="txtpaginainternet" type="text" value="${expositor.paginainternet}"/>
+<input name="txtpaginainternet" id="txtpaginainternet" type="text" value="${sponsor.paginainternet}"/>
 <br>
 <input id="inp" type='file'/>
-<input hidden="hidden" name="bslogo" id="bslogo" value="${expositor.logo}"/>
+<input hidden="hidden" name="bslogo" id="bslogo" value="${sponsor.logo}"/>
 <input hidden="hidden" name="txtcambio" id="txtcambio" value="0"/>
 <input type="submit" value="Editar" >
 </form>
-<form action="deleteExpositor"><input hidden="hidden" name="idexpositord" id="idexpositord" value="${expositor.id}"/><input type="submit" value="Eliminar" ></form>
+<form action="deleteSponsor"><input hidden="hidden" name="idsponsord" id="idsponsord" value="${sponsor.id}"/><input type="submit" value="Eliminar" ></form>
 
 <script type="text/javascript">
 function readFile() {

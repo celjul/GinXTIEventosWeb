@@ -1,6 +1,12 @@
 div{
 	margin: 0 auto;
 }
+body{
+	margin: 0;
+	padding: 0;
+	background-attachment: fixed;
+  	background-size: cover;
+}
 .container{
 	margin: 0 auto;
 	padding: 0;
@@ -54,7 +60,7 @@ div{
 	background-size: cover;
 	margin: 0;
 	padding: 18%;
-	height: 230px;
+	height: 280px;
 }
 h2{
 	text-align: center;
@@ -85,54 +91,56 @@ ion-icon {
 }
 
 .fondo-galeria{
-	background-image: url(../imagenes/fondoponentesmenu.png);
+	background-image: url(../imagenes/PortalCongreso-29.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #669990;
+	background-color: #253E5A;
 }
 .fondo-agenda{
-	background-image: url(../imagenes/fondoponentesmenu.png);
+	background-image: url(../imagenes/PortalCongreso-30.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #669990;
+	background-color: #253E5A;
 }
 .fondo-ponentes{
-	background-image: url(../imagenes/fondoponentesmenu.png);
+	background-image: url(../imagenes/PortalCongreso-31.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #669990;
+	background-color: #253E5A;
 }
 .fondo-patro{
-	background-image: url(../imagenes/fondoponentesmenu.png);
+	background-image: url(../imagenes/PortalCongreso-32.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #669990;
+	background-color: #253E5A;
 }
 
 .fondo-notificacion{
-	background-image: url(../imagenes/fondoponentesmenu.png);
+	background-image: url(../imagenes/PortalCongreso-37.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #669990;
+	background-color: #253E5A;
 }
+
 .fondo-admin{
 	background-image: url(../imagenes/admin.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #669990;
+	background-color: #253E5A;
 }
+
 header{
 	width: 100%;
 	padding: 2%;
@@ -175,6 +183,13 @@ header{
 	margin: 0;
 	padding: 0;
 }
+.tabla-notifi{
+	width: 80%;
+}
+.table-bordered{
+	margin-left: -2%;
+}
+
 tr{
 	color: #ffffff;
 }
@@ -182,23 +197,7 @@ tr{
 	position: fixed;
 	bottom: 0;
 }
-/*
-.page-link{
-	background-color: transparent;
-	border: 0;
-	bottom: 0;
-	position: fixed;
-	margin: 4%;
-	font-size: 4em;
-	color: red;
-	padding: 1%;
-}
-.page-link:hover{
-	background-color: transparent;
-	border: 1px red solid;
-	color: red;
-}
-*/
+
 .fondo-verde{
 	background-color: rgb(196, 214, 0);
 }
@@ -262,61 +261,95 @@ th.fondo-azul{
 p{
 	font-family: 'Roboto', sans-serif;
 }
-video{
-	margin: 0;
-	padding: 0;
-}
+
 .columna-dos{
 	border-right: 5px #213f59 solid;
 	border-left: 5px #213f59 solid;
 }
 
-#myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
+.full_screen{
+	position: fixed;
+  	right: 0; 
+  	bottom: 0;
+  	min-width: 100%; 
+  	min-height: 100%;
+  	width: auto; 
+  	height: auto;
+  	z-index: -100;
+  	margin: 0 auto;
 }
+
 .inicio{
     background-color: #213f59;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 25%;
+	height: 30%;
 	opacity: 0.8;
-	display: block;
 }
 .btn-img-index{
-	margin: 15%;
-	padding: 5%;
-	width: 80%;
+	margin: 2%;
+	padding: 2%;
+}
+.img-regreso{
+	width: 50px;
 	height: auto;
+	position: fixed;
+}
+.modal-body-media{
+	background: transparent;
 }
 
-@media (min-width: 576px) {
+
+@media (max-width: 575.98px) { 
 	.btn-img-index{
-		margin: 1%;
-		width: 50%;
-		height: auto;
+		margin: 0;
+		padding: 0;
+	}
+	.img-fluid{
+		max-width: 70%;
+	}
+	.oculto{
+    		visibility: hidden;
+    	}
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+ .btn-img-index{
+		margin: 0;
+		padding: 0;
+	}
+	.img-fluid{
+		max-width: 40%;
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991.98px) { 
 	.btn-img-index{
-		margin: 5%;
-		width: 60%;
-		height: auto;
+		margin: 0;
+		padding: 0;
+	}
+	.img-fluid{
+		max-width: 78%;
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199.98px) { 
 	.btn-img-index{
-		margin: 5%;
-		width: 80%;
-		height: auto;
+		margin: 0;
+		padding: 0;
+	}
+	.img-fluid{
+		max-width: 85%;
 	}
 }
 
 @media (min-width: 1200px) { 
+	.btn-img-index{
+		margin: 0;
+		padding: 0;
+	}
+	.img-fluid{
+		max-width: 92%;
+	}
 }

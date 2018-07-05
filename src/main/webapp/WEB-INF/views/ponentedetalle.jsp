@@ -19,6 +19,11 @@
 <body class="fondo-ponentes">
 	<div class="container">
 		<header>
+		<div class="justify-content-start">
+        <a href="atras">
+          <img class="img-regreso" src="resources/imagenes/back.png" alt="...">
+        </a>
+      </div>
 			<ul class="nav justify-content-end">
 			  <li class="nav-item">
 			    <a class="nav-link disabled" href="#">

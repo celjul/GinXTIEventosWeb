@@ -43,6 +43,8 @@
 
 <label>Empresa</label>
 <input name="txtempresa" id="txtempresa" type="text" value="${usuario.empresa}"/>
+
+<input name="txtcodigo" id="txtcodigo" type="text" hidden="hidden" value="${usuario.codigo}"/>
 <br>
 <input type="submit" value="Editar" >
 </form>

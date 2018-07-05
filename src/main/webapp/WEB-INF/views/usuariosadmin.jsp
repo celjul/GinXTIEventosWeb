@@ -33,9 +33,13 @@
 				   <th class="hasinput" style="width: 10%;">
 				   Empresa
 				   </th>
+				    <th class="hasinput" style="width: 10%;">
+				   Codigo
+				   </th>
 				   <th class="hasinput" style="width: 10%;">
 				   Editar
 				   </th>
+				   
 				</tr>					  	
 			</thead>
 			<tbody>
@@ -48,6 +52,7 @@
 								<td><label> ${list.categoria.detalle}</label></td>
 								<td><label> ${list.centro.centroOpeativo}</label></td>
 								<td><label> ${list.empresa}</label></td>
+								<td><label>${list.codigo}</label></td>
 								<td >
 									<button> Editar </button>
 									<input hidden="true" type="text"  id="${list.id}"/>

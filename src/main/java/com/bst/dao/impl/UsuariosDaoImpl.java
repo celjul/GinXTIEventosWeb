@@ -121,7 +121,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 		List lista = new ArrayList();
 		Connection conn = null;
 		try {
-			String sql = "select tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , " + 
+			String sql = "select tblusuarios.codigo, tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , " + 
 					"tblusuarios.fechanacimiento , tblcentrooperativo.nombre as centro , tblcategoriausuario.detalle as categoria, " + 
 					"tblestatususuarios.detalle as estatus , tblusuarios.empresa as empresa from tblusuarios , tblcategoriausuario , tblcentrooperativo,tblestatususuarios where " + 
 					"tblusuarios.idCategoria = tblcategoriausuario.idCategoria and tblusuarios.idCentroOperativo = tblcentrooperativo.idCentroOperativo and " + 
@@ -136,6 +136,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 				usuario.setEmail(rs.getString("email"));
 				usuario.setTelefono(rs.getString("telefono"));
 				usuario.setFechaNacimiento(rs.getDate("fechanacimiento"));
+				usuario.setCodigo(rs.getInt("codigo"));
 				EstatusUsuario status = new EstatusUsuario();
 				status.setDetalle(rs.getString("estatus"));
 				usuario.setEstatus(status);
@@ -146,8 +147,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 				CentroOperativo centro = new CentroOperativo();
 				centro.setCentroOpeativo(rs.getString("centro"));
 				usuario.setCentro(centro);
-				usuario.setEmpresa(" ");}
-				
+				usuario.setEmpresa(" ");}				
 				else {
 					CentroOperativo centro = new CentroOperativo();
 					centro.setCentroOpeativo("");
@@ -177,7 +177,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 		Connection conn = null;
 		Usuario usuario = new Usuario();
 		try {
-			String sql = "select tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , tblusuarios.fechanacimiento , " + 
+			String sql = "select tblusuarios.codigo, tblusuarios.idUsuarios, tblusuarios.nombre , tblusuarios.email , tblusuarios.telefono , tblusuarios.fechanacimiento , " + 
 					"tblcentrooperativo.nombre as centro ,tblusuarios.empresa as empresa ,tblcentrooperativo.idCentroOperativo as idcentro , " + 
 					"tblcategoriausuario.detalle as categoria, tblcategoriausuario.idCategoria as idcategoria," + 
 					"tblestatususuarios.detalle as estatus , tblestatususuarios.idEstatus as idEstatus from tblusuarios , tblcategoriausuario , tblcentrooperativo,tblestatususuarios where " + 
@@ -207,6 +207,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 				if(usuario.getCategoria().getId()==2) {
 					usuario.setEmpresa(rs.getString("empresa"));
 				}
+				usuario.setCodigo(rs.getInt("codigo"));
 				usuario.setEstatus(status);
 			}
 			

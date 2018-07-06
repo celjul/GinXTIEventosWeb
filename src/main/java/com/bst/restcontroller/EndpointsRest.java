@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bst.dao.AgendaDao;
 import com.bst.dao.CentroOperativoDao;
 import com.bst.dao.ExpositoresDao;
+import com.bst.dao.GaleriaDao;
 import com.bst.dao.PonentesDao;
 import com.bst.dao.SponsorsDao;
 import com.bst.dao.UsuarioDao;
 import com.bst.model.Agenda;
 import com.bst.model.Expositores;
+import com.bst.model.Galeria;
 import com.bst.model.Ponentes;
 import com.bst.model.Sponsors;
 import com.bst.model.Usuario;
@@ -44,6 +46,9 @@ public class EndpointsRest {
 	 
 	 @Autowired
 	 private AgendaDao agendaDao;
+	 
+	 @Autowired
+	 private GaleriaDao galeriaDao;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTlogin")
@@ -427,6 +432,35 @@ public class EndpointsRest {
 		 agendaDao.updateAgenda(titulo,fechainicio,horainicio,fechafin,horafin,ponentes,id);
 		 mapa.put("agenda", "200");
 		 context.close();
+	}
+
+	@RequestMapping("/RESTgetGaleria")
+	public Map getGaleria() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		galeriaDao = context.getBean(GaleriaDao.class);
+		 Map mapa = new HashMap<>();
+		 List<Galeria> galeria = galeriaDao.getGaleria();
+		 mapa.put("galeria", galeria);
+		 context.close();
+		 return mapa;
+	}
+
+	@RequestMapping("/RESTaddGaleria")
+	public Map addGaleria(@RequestParam(value="foto") String foto) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		galeriaDao = context.getBean(GaleriaDao.class);
+		 Map mapa = new HashMap<>();
+		 galeriaDao.addFoto(foto);
+		    mapa.put("foto", "200");
+		    context.close(); 
+		    return mapa;
+		
+	}
+	@RequestMapping("/RESTdeleteFoto")
+	public void deleteFoto(@RequestParam(value="id") String id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		galeriaDao = context.getBean(GaleriaDao.class);
+		galeriaDao.deleteFoto(id);
 	}
 
 }

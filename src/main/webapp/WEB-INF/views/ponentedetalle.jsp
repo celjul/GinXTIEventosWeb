@@ -14,7 +14,7 @@
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>PONENTES | CONGERSO DIGITAL</title>
+    <title>PONENTES | CONGRESO DIGITAL</title>
   </head>
 <body class="fondo-ponentes">
 	<div class="container">

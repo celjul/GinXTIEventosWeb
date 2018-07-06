@@ -455,4 +455,44 @@ public class HelloController {
    	}
     
     
+    @GetMapping("/galeriaadmin")
+   	public String galeriaadmin(Model model,HttpServletRequest request) {
+    	Map mapa = serviciosRest.getGaleria();
+    	List galeria = (List) mapa.get("galeria");
+    	model.addAttribute("fotos", galeria);
+    	return "galeriaadmin";
+   	}
+    
+    @GetMapping("/agregarFoto")
+   	public String anadirFoto(Model model,HttpServletRequest request) {
+    	return "agregarFoto";
+   	}
+    
+    @PostMapping("/addFoto")
+   	public String addFoto(Model model,HttpServletRequest request) {
+    	String bslogo = request.getParameter("bslogo");
+    	String bslogolimpia=bslogo.substring(22);
+    	serviciosRest.addGaleria(bslogolimpia);
+    	return "menuadmin";
+   	}
+    
+    @GetMapping("/galeria")
+   	public String galeria(Model model,HttpServletRequest request) {
+    	Map mapa = serviciosRest.getGaleria();
+    	List galeria = (List) mapa.get("galeria");
+    	model.addAttribute("fotos", galeria);
+    	return "galeria";
+   	}
+    
+    @GetMapping("/eliminarFoto")
+   	public String eliminarFoto(Model model,HttpServletRequest request) {
+    	String id = request.getParameter("idfoto");
+    	serviciosRest.deleteFoto(id);
+    	Map mapa = serviciosRest.getGaleria();
+    	List galeria = (List) mapa.get("galeria");
+    	model.addAttribute("fotos", galeria);
+    	return "galeriaadmin";
+   	}
+    
+    
 }

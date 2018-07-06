@@ -14,7 +14,7 @@
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>CATALOGO | CONGERSO DIGITAL</title>
+    <title>CATALOGO | CONGRESO DIGITAL</title>
   </head>
   <body style="background-color: #213f59;">
 
@@ -28,9 +28,16 @@
     <div class="container">
       <div class="row align-items-center">
   
+  <div class="col-6 col-md-4" style="background-image: url('resources/imagenes/PortalCongreso-29.png'); background-repeat: no-repeat;">
+	    	<div class="div-fondo">
+		    	<a href="galeria">
+	    			<h2>Galería <ion-icon name="camera"></ion-icon></h2>
+	    		</a>
+	    	</div>
+	    </div>
         <div class="col-6 col-md-4" style="background-image: url('resources/imagenes/fondoagendamenu.png'); background-repeat: no-repeat;">
             <div class="div-fondo">
-                <a href="agenda.html">
+                <a href="agenda">
                     <h2>Agenda <ion-icon name="calendar"></ion-icon></h2>
                 </a>
             </div>

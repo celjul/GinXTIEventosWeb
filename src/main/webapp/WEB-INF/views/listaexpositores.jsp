@@ -15,7 +15,7 @@
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>EXPOSITORES | CONGERSO DIGITAL</title>
+    <title>EXPOSITORES | CONGRESO DIGITAL</title>
     <style>
       .img-expositores{
         border-radius: 1%;

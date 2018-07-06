@@ -14,7 +14,7 @@
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>NOTIFICACIONES | CONGERSO DIGITAL</title>
+    <title>NOTIFICACIONES | CONGRESO DIGITAL</title>
   </head>
 <body class="fondo-notificacion">
 	<div class="container">

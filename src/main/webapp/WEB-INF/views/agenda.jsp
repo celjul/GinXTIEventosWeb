@@ -15,7 +15,7 @@
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>AGENDA | CONGERSO DIGITAL</title>
+    <title>AGENDA | CONGRESO DIGITAL</title>
   </head>
 <body class="fondo-agenda">
 	<div class="container">

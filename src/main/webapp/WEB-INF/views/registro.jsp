@@ -11,7 +11,7 @@
 
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>LOGIN | CONGERSO DIGITAL</title>
+    <title>LOGIN | CONGRESO DIGITAL</title>
   </head>
   <body style="background-color: #213f59;">
     <div class="container">

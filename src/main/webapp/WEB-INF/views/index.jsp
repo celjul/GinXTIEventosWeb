@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
-    <title>CONGERSO DIGITAL</title>
+    <title>CONGRESO DIGITAL</title>
     <style>
     	video{
     	min-width: 100%;

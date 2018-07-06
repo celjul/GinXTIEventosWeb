@@ -14,7 +14,7 @@
      <!-- Estilos Personalizados de Bootstrap -->
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
-    <title>ADMNISTRACIÓN | CONGERSO DIGITAL</title>
+    <title>ADMNISTRACIÓN | CONGRESO DIGITAL</title>
     <style>
       .opcion-admin{
         border: 2px #213f59 solid;
@@ -50,6 +50,13 @@
         <div class="opcion-admin">
           <h2>
             <a href="conferenciasadmin">Conferencias</a>
+          </h2>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="opcion-admin">
+          <h2>
+            <a href="galeriaadmin">Galeria</a>
           </h2>
         </div>
       </div>

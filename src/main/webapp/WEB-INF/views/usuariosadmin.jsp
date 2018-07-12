@@ -4,7 +4,7 @@
 <html>
 <head>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Insert title here</title>
 </head>
 <body >

@@ -20,7 +20,7 @@
       .img-expositores{
         border-radius: 1%;
 
-        width: 100px;
+        width: 200px;
       }
     </style>
   </head>
@@ -44,10 +44,10 @@
     <div class="row">
     <c:forEach items="${lista}" var="list">
       <div class="col align-self-center">
-        <a href="${list.paginainternet}">
-          <div class="col">
+        <a href="${list.paginainternet}" target="_blank">
+         
           <img class="img-expositores" src="data:image/png;base64,${list.logo}" alt="...">
-          </div>
+         
         </a>
       </div>
       </c:forEach>

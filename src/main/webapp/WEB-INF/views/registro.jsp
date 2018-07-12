@@ -12,51 +12,108 @@
     <link href="resources/css/style-component.css" rel="stylesheet" type="text/css">
 
     <title>LOGIN | CONGRESO DIGITAL</title>
+    
+    <style>
+    .container2 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container2 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 0%;
+}
+
+/* When the radio button is checked, add a blue background */
+.container2 input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container2 input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container2 .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+    </style>
   </head>
   <body style="background-color: #213f59;">
     <div class="container">
 	  <div class="row registro" >
 	    <div class="col">
-	      
+	       <a href="home">
+          <img class="img-regreso" src="resources/imagenes/back.png" alt="...">
+        </a>
 	    </div>
 	    <div class="col">
 	    	<span class="align-middle">
 	    		<div class="d-flex rec-olv">
 				  	<div class="mr-auto p-2">
-				  	<img src="resources/imagenes/PortalCongreso-15.png" onmouseover="cambiarImagen()" onmouseout="retornarImagen()" id="logoregistro" class="rounded" alt="Logo"/>
+				  	<img src="resources/imagenes/PortalCongreso-15.png" onmouseover="cambiarImagen()" onmouseout="retornarImagen()" id="logoregistro" class="img-fluid" alt="Logo"/>
 				  	</div>
 				  	<div class="p-2">
-				  		<div class="text-right registrate">
-				  			<label>Regístrate</label>
-				  		</div>
+				  			
 				  	</div>
 				  </div>
 	    		
 				<form  action="addregistro" method="post" id="myForm" name="myForm" style="display: inline-block; width: 100%;">
 				   <div class="d-flex rec-olv">
-				  	<div class="mr-auto p-2">
-				  		<div class="form-check">
-				  			<input  onclick="deshabilitarCheckcolaborador()" type="checkbox" id="chckcolaborador" disabled="disabled" name="chckcolaborador" />  
-							<small><label class="form-check-label" for="colaborador">Colaborador</label></small>
-						</div>
-				  	</div>
-				  	<div class="p-2">
-				  		<div class="form-check">
-				  			<input  onclick="deshabilitarCheck()" type="checkbox" id="chckcliente" checked="checked" name="chckcliente" />
-				  			<small><label class="form-check-label" for="cliente">Cliente</label></small>
-						</div>
-				  	</div>
-				  	<input type="hidden" id="txtcategoria" name="txtcategoria" value="2"/>
-						
+				  	<label style=" font-size: 15px;color:white;"class="container2">Cliente
+					  <input type="radio" checked="checked" value="2" name="txtcategoria">
+					  <span class="checkmark"></span>
+					</label>
+					<div class="col"></div>
+					<label style=" font-size: 15px;color:white;" class="container2">Colaborador
+						  <input type="radio" name="txtcategoria" value="1">
+						  <span class="checkmark"></span>
+					</label>
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="txtnombre" name="txtnombre" aria-describedby="emailHelp" placeholder="NOMBRE">
+				    <input required type="text" class="form-control" id="txtnombre" name="txtnombre" aria-describedby="emailHelp" placeholder="NOMBRE">
 				  </div>
 				  <div class="form-group">
-				    <input type="password" class="form-control" id="txtcodigo" name="txtcodigo" placeholder="CONTRASEÑA">
+				    <input required type="password" class="form-control" id="txtcodigo" name="txtcodigo" placeholder="CONTRASEÑA">
 				  </div>
 				  <div class="form-group">
-				    <input type="email" class="form-control" id="txtmail" name="txtmail" id="correo" placeholder="CORREO ELECTRONICO">
+				    <input required type="email" class="form-control" id="txtmail" name="txtmail" id="correo" placeholder="CORREO ELECTRONICO">
 				  </div>
 				  <div class="form-group">
 				    <input type="text" class="form-control" name="txtcelular" id="txtcelular" aria-describedby="emailHelp" placeholder="TELÉFONO CELULAR">
@@ -69,7 +126,7 @@
 									</select>
 									<input type="text" class="form-control" placeholder="EMPRESA" id="txtEmpresa" name="txtEmpresa"/></div>
 				  <div class="form-group">
-				    <input type="date" class="form-control" id="centroop" id="txtnacimiento" name="txtnacimiento" aria-describedby="emailHelp" placeholder="FECHA NACIMIENTO">
+				    <input type="date" required class="form-control" id="centroop" id="txtnacimiento" name="txtnacimiento" aria-describedby="emailHelp" placeholder="FECHA NACIMIENTO">
 				  </div>
 				 
 				  <button type="submit" class="btn btn-success botonverde">REGISTRARSE</button>
@@ -89,34 +146,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  <script type="text/javascript"> 
 
-function deshabilitarCheckcolaborador(){
-	if (document.getElementById("chckcolaborador").checked){
-		document.getElementById("txtEmpresa").hidden = true; 
-		document.getElementById("centrooperativo").hidden = false; 
-		document.getElementById("chckcliente").disabled = true;
-		document.getElementById("txtcategoria").value = 1;
-	}else{document.getElementById("chckcliente").disabled = false;
-	document.getElementById("txtcategoria").value = 0;
-	}
-	
-}
-
-function deshabilitarCheck(){
-	if (document.getElementById("chckcliente").checked){
-		document.getElementById("txtEmpresa").hidden = false; 
-		document.getElementById("centrooperativo").hidden = true; 
-		document.getElementById("chckcolaborador").disabled = true;
-		document.getElementById("txtcategoria").value = 2;
-	}else{document.getElementById("chckcolaborador").disabled = false;
-	document.getElementById("txtcategoria").value = 0;}
-	
-}
 function cambiarImagen() {
-	document.getElementById("logoregistro").src="resources/imagenes/cabezaRegistro.png";
+	document.getElementById("logoregistro").src="resources/imagenes/PortalCongreso-15.png";
 }
 
 function retornarImagen() {
-	document.getElementById("logoregistro").src="resources/imagenes/cruzregistro.png";
+	document.getElementById("logoregistro").src="resources/imagenes/PortalCongreso-15.png";
 }
 </script>
   </body>

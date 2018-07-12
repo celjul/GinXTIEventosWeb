@@ -21,7 +21,7 @@
 	    <div class="col">
 	    	<span class="align-middle">
 	    		<div class="text-center">
-					<img src="resources/imagenes/PortalCongreso-16.png" class="rounded" alt="Logo"  id="logo" name="logo" onMouseOver="cambiar();" onMouseOut="volver();">
+					<img src="resources/imagenes/PortalCongreso-16.png" class="rounded" alt="Logo"  id="logo" name="logo" >
 				</div>
 				<form action="logeo" method="post">
 				  <div class="form-group">
@@ -30,9 +30,12 @@
 				  <div class="form-group">
 				    <input type="password" name="txtcodigo" id="txtcodigo" class="form-control" id="exampleInputPassword1" placeholder="CONTRASEÑA">
 				  </div>
-				  <button type="submit" class="btn btn-success botonverde">INGESAR</button>
+				  <button type="submit" class="btn btn-success botonverde">INGRESAR</button>
 
 				  <div class="d-flex rec-olv">
+				  <a href="home">
+          <img class="img-regreso" src="resources/imagenes/back.png" alt="...">
+        </a>
 				  	<div class="mr-auto p-2">
 				  		<div class="form-check">
 						    <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -44,8 +47,11 @@
 					  		<small><a href="#" class="linkuno">¿Olvidaste tu Contraseña?</a></small>
 					  	</div>
 				  	</div>
+				  	
 				  </div>
-				  <div class="linea"></div>
+				  <div class="linea">
+				  </div>
+			
 				</form>
 	    	</span>
 	      	

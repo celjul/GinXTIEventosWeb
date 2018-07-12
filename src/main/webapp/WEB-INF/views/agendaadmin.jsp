@@ -20,12 +20,7 @@
 <body class="fondo-agenda">
 	<div class="container">
 		<header>
-      <div class="justify-content-start">
-        <a href="atras">
-          <img class="img-regreso" src="resources/imagenes/back.png" alt="...">
-        </a>
-    
-      </div>
+   
      
 			<ul class="nav justify-content-end">
 			<li> <a href="agregaragenda">

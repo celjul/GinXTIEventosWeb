@@ -21,7 +21,7 @@
 <header>
     		<ul class="nav justify-content-end">
 			  <li class="nav-item">
-	                <a href="logout"><ion-icon name="log-out"></ion-icon> </a>
+	                <a href="logout"><img alt="" src="resources/imagenes/Congreso-03.png"> </a>
 
 </li>
 </ul></header>  
@@ -85,12 +85,12 @@
             <div class="modal-body" style="text-align: center;">
                 <div class="row">
                   <div class="col" style="margin: 5%;">
-                    <a href="https://www.facebook.com/GINgroupMX/?">
+                    <a href="https://www.facebook.com/GINxti/" target="_blank">
                         <img src="resources/imagenes/facebook.png" alt="" style="width: 50%; height: auto; display: inline-block;">
                     </a>
                   </div>
                   <div class="col" style="margin: 5%;">
-                    <a href="https://twitter.com/GINxti">
+                    <a href="https://twitter.com/GINxti" target="_blank">
                         <img src="resources/imagenes/twitter.png" alt="" style="width: 50%; height: auto; display: inline-block;">
                     </a>
                   </div>

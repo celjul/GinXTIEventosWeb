@@ -15,6 +15,8 @@ body{
 .row{
 	z-index: 1;
 	text-align: center;
+	margin-right: 0% !important;
+	margin-lefth: 0% !important;
 }
 
 .botonverde{
@@ -187,7 +189,7 @@ header{
 	width: 80%;
 }
 .table-bordered{
-	margin-left: -2%;
+	margin-left: 0%;
 }
 
 tr{
@@ -212,9 +214,9 @@ th.fondo-azul{
 }
 .tabla-ponente{
 	margin: 5%;
-	border-top: 7px red solid;
-	border-right: 7px red solid;
-	border-bottom: 7px red solid;
+	border-top: 7px #C3D500 solid;
+	border-right: 7px #C3D500 solid;
+	border-bottom: 7px #C3D500 solid;
 }
 .contenido-ponente{
 	text-decoration: none;
@@ -283,7 +285,7 @@ p{
     background-color: #213f59;
 	position: absolute;
 	bottom: 0;
-	width: 100%;
+	width: 104%;
 	height: 30%;
 	opacity: 0.8;
 }
@@ -294,7 +296,7 @@ p{
 .img-regreso{
 	width: 50px;
 	height: auto;
-	position: fixed;
+	position: absolute;
 }
 .modal-body-media{
 	background: transparent;
@@ -307,11 +309,31 @@ p{
 		padding: 0;
 	}
 	.img-fluid{
-		max-width: 70%;
+		max-width: 40%;
 	}
 	.oculto{
-    		visibility: hidden;
+    		display: none;
     	}
+    .inicio{
+    	width: 104%;
+    	height: 15%;
+    	padding: 3%;
+    }
+    .col-auto{
+    	width: 50%;
+    	max-width: none;
+    	margin: 0;
+    	padding: 0;
+    }
+    .table{
+    font-size: 0.6 em;
+    
+    }
+    .img-galeria{
+    width:100%;
+    height:auto;
+    }
+
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -350,6 +372,22 @@ p{
 		padding: 0;
 	}
 	.img-fluid{
-		max-width: 92%;
+		max-width: 65%;
+	}
+	.col-auto{
+	margin-top:1%;
+	}
+	.inicio{
+		height:18%;
 	}
 }
+
+
+input[type="date"]:before {
+  color: grey;
+  content: attr(placeholder) !important;
+  
+}
+input[type="date"]:focus:before {
+  content: '' !important;
+}	

@@ -17,5 +17,7 @@ public interface AgendaDao {
 
 	public void updateAgenda(String titulo, String fechainicio, String horainicio, String fechafin, String horafin,
 			String[] ponentes, String id);
+
+	public List getAgendaCompleta();
 	
 }

@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,8 +12,9 @@
 <input hidden="hidden" name="idponente" id="idponente" value="${ponente.id}"/>
 <label>Puesto</label>
 <input name="txtpuesto" id="txtpuesto" type="text" value="${ponente.puesto}"/>
+<br>
 <label>Semblanza</label>
-<input name="txtsemblanza" id="txtsemblanza" type="text" value="${ponente.semblanza}"/>
+<textarea name="txtsemblanza" cols="150" rows="10" id="txtsemblanza" type="text" >${ponente.semblanza}</textarea>
 <label>Logo</label>
 <input id="inp" type='file'/>
 <input hidden="hidden" name="bslogo" id="bslogo" value="${ponente.foto}"/>

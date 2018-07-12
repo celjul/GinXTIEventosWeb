@@ -147,6 +147,7 @@ public class PonentesDaoImpl implements PonentesDao{
 		Connection conn = null;
 		try {
 		String sql = "insert into ponentes(nombre,puesto,semblanza,foto) values('"+nombre+"','"+puesto+"','"+semblanza+"','"+b+"')";
+		System.out.println(sql);
 		conn = dataSource.getConnection();
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.executeUpdate();

@@ -290,7 +290,7 @@ public class EndpointsRest {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTaddPonente")
-	public Map addPonente(String nombre, String puesto, String semblanza,String b) {
+	public Map addPonente(@RequestParam(value="nombre") String nombre, @RequestParam(value="puesto") String puesto,@RequestParam(value="semblanza")  String semblanza,@RequestParam(value="foto") String b) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		ponentesDao = context.getBean(PonentesDao.class);
 		 Map mapa = new HashMap<>();
@@ -383,6 +383,18 @@ public class EndpointsRest {
 		agendaDao = context.getBean(AgendaDao.class);
 		 Map mapa = new HashMap<>();
 		 List agenda = agendaDao.getAgenda(idDia);
+		 mapa.put("agenda", agenda);
+		 context.close();
+		 return mapa;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping("/RESTgetAgendaCompleta")
+	public Map getAgendaCompleta() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		agendaDao = context.getBean(AgendaDao.class);
+		 Map mapa = new HashMap<>();
+		 List agenda = agendaDao.getAgendaCompleta();
 		 mapa.put("agenda", agenda);
 		 context.close();
 		 return mapa;

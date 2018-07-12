@@ -1,5 +1,6 @@
 package com.bst.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.sql.Blob;
 import java.sql.Date;
@@ -33,6 +34,11 @@ public class HelloController {
 	public String index() {
 		   return "index";
 	}
+    
+    @RequestMapping("/home")
+   	public String home() {
+   		   return "index";
+   	}
 	
 	protected EndpointsRest serviciosRest = new EndpointsRest();
 	
@@ -267,18 +273,13 @@ public class HelloController {
    	}
     
     @PostMapping("/addPonente")
-   	public String addPonente(Model model,HttpServletRequest request) {
+   	public String addPonente(Model model,HttpServletRequest request) throws UnsupportedEncodingException {
+    	 
     	String bslogo = request.getParameter("bslogo");
     	String bslogolimpia=bslogo.substring(22);
     	String nombre = request.getParameter("txtnombre");
     	String puesto = request.getParameter("txtpuesto");
     	String semblanza = request.getParameter("txtsemblanza");
-    	byte[] bytes = nombre.getBytes(StandardCharsets.UTF_8);
-    	nombre = new String(bytes, StandardCharsets.ISO_8859_1);
-    	byte[] bytes2 = puesto.getBytes(StandardCharsets.UTF_8);
-    	puesto = new String(bytes2, StandardCharsets.ISO_8859_1);
-    	byte[] bytes3 = semblanza.getBytes(StandardCharsets.UTF_8);
-    	semblanza = new String(bytes3, StandardCharsets.ISO_8859_1);
     	serviciosRest.addPonente(nombre,puesto,semblanza,bslogolimpia);
     	return "menuadmin";
    	}
@@ -346,6 +347,12 @@ public class HelloController {
     
     @PostMapping("/addSponsor")
    	public String addSponsor(Model model,HttpServletRequest request) {
+    	try {
+			request.setCharacterEncoding("ISO-8859-1");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	String nombre = request.getParameter("txtnombre");
     	String facebook = request.getParameter("txtfacebook");
     	String google = request.getParameter("txtgoogle");

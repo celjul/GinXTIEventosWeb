@@ -20,7 +20,7 @@
       .img-expositores{
         border-radius: 1%;
 
-        width: 100px;
+        width: 300px;
       }
     </style>
   </head>
@@ -34,9 +34,9 @@
       </div>
 			<ul class="nav justify-content-end">
 			  <li class="nav-item">
-			    <a class="nav-link disabled" href="#">
+			
 			    	<h2>Sponsors <ion-icon name="clipboard"></ion-icon></h2>
-			    </a>
+			    
 			  </li>
 			</ul>
 		</header>
@@ -44,7 +44,7 @@
     <div class="row">
     <c:forEach items="${lista}" var="list">
       <div class="col align-self-center">
-        <a href="${list.paginainternet}">
+        <a href="${list.paginainternet}" target="_blank">
           <div class="col">
           <img class="img-expositores" src="data:image/png;base64,${list.logo}" alt="...">
           </div>

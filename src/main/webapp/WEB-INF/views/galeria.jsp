@@ -35,7 +35,7 @@
 		</header>
 		<div class="row">
 			<div class="col-2 col-md-3"></div>
-			<div class="col-10 col-md-9 align-self-end">
+			<div class="col-8 col-md-6 align-self-end">
 				<div class="container">
 				<div class="row">
 				<c:forEach items="${fotos}" var="foto">
@@ -55,6 +55,7 @@
 				</c:forEach></div>
 			</div>
 		</div>
+		<div class="col-2 col-md-3"></div>
 	</div>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

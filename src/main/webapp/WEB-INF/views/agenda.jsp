@@ -27,9 +27,9 @@
       </div>
 			<ul class="nav justify-content-end">
 			  <li class="nav-item">
-			    <a class="nav-link disabled" href="#">
+			 
 			    	<h2>Agenda <ion-icon name="calendar"></ion-icon></h2>
-			    </a>
+		
 			  </li>
 			</ul>
 		</header>
@@ -37,7 +37,7 @@
       <div class="col-3">
         
       </div>
-      <div class="col-9">
+      <div class="col-12 col-sm-auto table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr class="fondo-verde">
@@ -58,6 +58,12 @@
                 <h2 style="font-size: 3em; color: rgb(196, 214, 0); float: right;">28</h2>
               </th>
             </tr>
+            <tr>
+              <th scope="col">8:00</th>
+              <th scope="col">9:00</th>
+      			<td colspan="2"><h2>Registro</h2></h2></td>
+        	
+            </tr>
             <c:forEach items="${lista1}" var="list1">
             <tr>
               <th scope="col">${list1.horainicioString}</th>
@@ -75,7 +81,7 @@
       <div class="col-3">
         
       </div>
-      <div class="col-9">
+      <div class="col-12 col-sm-auto table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr class="fondo-verde">
@@ -95,6 +101,12 @@
                 <h2 style="font-size: 3em;">AGOSTO</h2>
                 <h2 style="font-size: 3em; color: rgb(196, 214, 0); float: right;">29</h2>
               </th>
+            </tr>
+             <tr>
+              <th scope="col">8:00</th>
+              <th scope="col">9:00</th>
+      			<td colspan="2"><h2>Registro</h2></h2></td>
+        	
             </tr>
             <c:forEach items="${lista2}" var="list2">
             <tr>

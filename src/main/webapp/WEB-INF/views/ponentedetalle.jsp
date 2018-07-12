@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -20,7 +21,7 @@
 	<div class="container">
 		<header>
 		<div class="justify-content-start">
-        <a href="atras">
+        <a href="listaponentes">
           <img class="img-regreso" src="resources/imagenes/back.png" alt="...">
         </a>
       </div>
@@ -33,7 +34,7 @@
 			</ul>
 		</header>
     <div class="row">
-      <div class="col-4 col-md-3 col-sm-6">
+      <div class=" col-md-3 col-sm-6">
         <img class="rounded-circle" src="data:image/png;base64,${ponente.foto}" alt="">        
       </div>
       <div class="col-8 col-md-9 col-sm-6">

@@ -41,13 +41,78 @@ public class AgendaDaoImpl implements AgendaDao{
 				agenda.setId(rs.getInt("id"));
 				agenda.setHorainicio(rs.getTimestamp("hora_inicio"));
 				agenda.setHorafin(rs.getTimestamp("hora_fin"));
-				if(agenda.getHorainicio().getMinutes()==0) {
-					agenda.setHorainicioString(agenda.getHorainicio().getHours()+":00" );					
+				if(agenda.getHorainicio().getMinutes()<10) {
+					switch (agenda.getHorainicio().getMinutes()) {
+					case 0:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":00" );
+						break;
+					case 1:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":01" );
+						break;
+					case 2:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":02" );
+						break;
+					case 3:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":03" );
+						break;
+					case 4:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":04" );
+						break;
+					case 5:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":05" );
+						break;
+					case 6:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":06" );
+						break;
+					case 7:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":07" );
+						break;
+					case 8:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":08" );
+						break;
+					case 9:
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":09" );
+						break;
+
+					}
+					
 				}else {
 					agenda.setHorainicioString(agenda.getHorainicio().getHours()+":"+agenda.getHorainicio().getMinutes() );					
 				}
-				if(agenda.getHorafin().getMinutes()==0) {
-					agenda.setHorafinString(agenda.getHorafin().getHours()+":00" );					
+				if(agenda.getHorafin().getMinutes()<10) {
+					switch (agenda.getHorafin().getMinutes()) {
+					case 0:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":00" );
+						break;
+					case 1:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":01" );
+						break;
+					case 2:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":02" );
+						break;
+					case 3:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":03" );
+						break;
+					case 4:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":04" );
+						break;
+					case 5:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":05" );
+						break;
+					case 6:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":06" );
+						break;
+					case 7:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":07" );
+						break;
+					case 8:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":08" );
+						break;
+					case 9:
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":09" );
+						break;
+					}
+										
 				}else {
 					agenda.setHorafinString(agenda.getHorafin().getHours()+":"+agenda.getHorafin().getMinutes() );				
 				}
@@ -254,4 +319,116 @@ public class AgendaDaoImpl implements AgendaDao{
 		
 		}
 	}
+
+	@Override
+	public List getAgendaCompleta() {
+		Connection conn = null;
+			List listaAgenda = new ArrayList();
+		
+			try {
+				String sql = "SELECT * FROM agenda order by hora_inicio";
+				conn = dataSource.getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					Agenda  agenda = new Agenda();
+					agenda.setId(rs.getInt("id"));
+					agenda.setHorainicio(rs.getTimestamp("hora_inicio"));
+					agenda.setHorafin(rs.getTimestamp("hora_fin"));
+					if(agenda.getHorainicio().getMinutes()<10) {
+						switch (agenda.getHorainicio().getMinutes()) {
+						case 0:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":00" );
+							break;
+						case 1:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":01" );
+							break;
+						case 2:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":02" );
+							break;
+						case 3:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":03" );
+							break;
+						case 4:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":04" );
+							break;
+						case 5:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":05" );
+							break;
+						case 6:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":06" );
+							break;
+						case 7:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":07" );
+							break;
+						case 8:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":08" );
+							break;
+						case 9:
+							agenda.setHorainicioString(agenda.getHorainicio().getHours()+":09" );
+							break;
+
+						}
+						
+					}else {
+						agenda.setHorainicioString(agenda.getHorainicio().getHours()+":"+agenda.getHorainicio().getMinutes() );					
+					}
+					if(agenda.getHorafin().getMinutes()<10) {
+						switch (agenda.getHorafin().getMinutes()) {
+						case 0:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":00" );
+							break;
+						case 1:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":01" );
+							break;
+						case 2:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":02" );
+							break;
+						case 3:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":03" );
+							break;
+						case 4:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":04" );
+							break;
+						case 5:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":05" );
+							break;
+						case 6:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":06" );
+							break;
+						case 7:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":07" );
+							break;
+						case 8:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":08" );
+							break;
+						case 9:
+							agenda.setHorafinString(agenda.getHorafin().getHours()+":09" );
+							break;
+						}
+											
+					}else {
+						agenda.setHorafinString(agenda.getHorafin().getHours()+":"+agenda.getHorafin().getMinutes() );				
+					}
+					agenda.setTitulo(rs.getString("titulo"));
+					List ponentes = getPonentesAgenda(agenda.getId());
+					agenda.setPonentes(ponentes);
+					listaAgenda.add(agenda);
+				}
+				rs.close();
+				ps.close();
+			}catch (SQLException e) {
+				throw new RuntimeException(e);
+				
+			}finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		
+			
+			}return listaAgenda;
+		}
+
 }

@@ -34,11 +34,13 @@
   </head>
 <body>
 	<video autoplay muted loop id="myVideo" class="full_screen">
+		<source src="resources/videos/movie.ogg" type="video/ogg">
+		<source src="resources/videos/movie.webm" type="video/webm">
 	  <source src="resources/videos/videoindex.mp4" type="video/mp4">
 	</video>
 	<footer class="row inicio">
 		<div class="col oculto"></div>
-		<div class="col"></div>
+		<div class="col oculto" ></div>
 		<div class="col-auto">
 			<a href="login" onMouseOver="cambiar();" onMouseOut="volver();">
 		  		<img class="img-fluid btn-img-index" id="btn_imagen1" src="resources/imagenes/PortalCongreso-10.png">
@@ -49,8 +51,8 @@
 		  		<img class="img-fluid btn-img-index" id="btn_imagen2" src="resources/imagenes/PortalCongreso-11.png">
 		  	</a>
 		</div>
-		<div class="col"></div>
-		<div class="col"></div>
+		<div class="col oculto"></div>
+		<div class="col oculto"></div>
 	</footer>
 
 	<script type="text/javascript">

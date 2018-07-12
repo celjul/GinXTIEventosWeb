@@ -32,13 +32,9 @@
 			  </li>
 			</ul>
 		</header>
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <!--
-        <div style="color: #ffffff;"><ion-icon name="chatbubbles"></ion-icon></div>
-      -->
-      </div>
-      <div class="col-8">
+  
+     
+      <div class="col-10 col-sm-auto">
         <table class="table align-self-start tabla-notifi">
           <thead>
             <tr>
@@ -57,7 +53,7 @@
           </tbody>
         </table>
       </div>
-    </div>
+   
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

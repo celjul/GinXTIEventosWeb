@@ -88,17 +88,21 @@ public class UsuariosDaoImpl implements UsuarioDao {
 	}
 
 	@Override
-	public int logeoapp(String email, String codigo) {
+	public Usuario logeoapp(String email, String codigo) {
 		Connection conn = null;
-		int a=0;
+		Usuario usuario = new Usuario();
 		try {
-			String sql = "select idCategoria from tblusuarios where email = '"+email+"' and codigo = '"+codigo+"' ";
+			String sql = "select idUsuarios, nombre, idCategoria from tblusuarios where email = '"+email+"' and codigo = '"+codigo+"' ";
 			conn = dataSource.getConnection();
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			if(rs.first()) {
-				a = rs.getInt("idCategoria");
+				CategoriaUsuario categoria = new CategoriaUsuario();
+				categoria.setId(rs.getInt("idCategoria"));
+				usuario.setId(rs.getInt("idUsuarios"));
+				usuario.setNombre(rs.getString("nombre"));
+				usuario.setCategoria(categoria); 
 			}
 			rs.close();
 			ps.close();
@@ -112,7 +116,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 				} catch (SQLException e) {}
 			}
 		}		
-		return a;
+		return usuario;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

@@ -67,9 +67,9 @@ public class EndpointsRest {
 	public Map loginapp(@RequestParam(value="email") String email,@RequestParam(value="codigo") String codigo) throws JSONException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
-		int categoria = usuarioDao.logeoapp(email, codigo);
+		Usuario usuario = usuarioDao.logeoapp(email, codigo);
 	    Map mapa = new HashMap<>();
-	    mapa.put("Categoria", categoria);
+	    mapa.put("Categoria", usuario);
 	    context.close();
 	    return mapa;    
     }

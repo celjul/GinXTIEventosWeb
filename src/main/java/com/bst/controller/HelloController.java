@@ -70,10 +70,11 @@ public class HelloController {
     	List lista = (List) mapa.get("Centros Operativos");
     	model.put("lista",lista);	
         return "registro";
+        
     }
     
     @PostMapping("/addregistro")
-    public String  pushRegisro(HttpServletRequest request) {
+    public String  pushRegisro(HttpServletRequest request,Map<String, Object> model) {
     	String nombre = request.getParameter("txtnombre");
     	String email = request.getParameter("txtmail");
     	String contrasena = request.getParameter("txtcodigo");
@@ -86,11 +87,17 @@ public class HelloController {
     	int idCentroOperativo = Integer.valueOf(idCentroOperativoTemp);
     	int idCategoria = Integer.valueOf(idCategoriaTemp);
     	//metervalidacion de existente
+    	try {
     	if(idCategoria==1) {
     	serviciosRest.registrar(nombre, email, contrasena, telefono, fechaNacimiento, idCentroOperativo, idCategoria);  	
     	}else {
     		serviciosRest.registrarClientes(nombre, email, contrasena, telefono, fechaNacimiento, empresa, idCategoria);
-    	}
+    	}}catch(Exception e) {
+    		Map mapa = serviciosRest.getCentrosOperativos();
+        	List lista = (List) mapa.get("Centros Operativos");
+        	model.put("lista",lista);	
+        	return "error_registro";
+        }
     	return "menu";
     }
     

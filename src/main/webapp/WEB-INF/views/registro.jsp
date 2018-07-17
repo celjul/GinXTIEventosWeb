@@ -96,13 +96,13 @@
 	    		
 				<form  action="addregistro" method="post" id="myForm" name="myForm" style="display: inline-block; width: 100%;">
 				   <div class="d-flex rec-olv">
-				  	<label style=" font-size: 15px;color:white;"class="container2">Cliente
+				  	<label style=" font-size: 15px;color:white;"class="container2" onchange="handleChange2();">Cliente
 					  <input type="radio" checked="checked" value="2" name="txtcategoria">
 					  <span class="checkmark"></span>
 					</label>
 					<div class="col"></div>
 					<label style=" font-size: 15px;color:white;" class="container2">Colaborador
-						  <input type="radio" name="txtcategoria" value="1">
+						  <input type="radio" name="txtcategoria" value="1" onchange="handleChange1();">
 						  <span class="checkmark"></span>
 					</label>
 				  </div>
@@ -145,6 +145,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  <script type="text/javascript"> 
+ 
+ function handleChange1() {
+		document.getElementById("txtEmpresa").hidden = true; 
+			document.getElementById("centrooperativo").hidden = false; 
+
+	    
+	}
+ 
+ function handleChange2() {
+		document.getElementById("txtEmpresa").hidden = false; 
+			document.getElementById("centrooperativo").hidden = true; 
+	    
+	}
+ 
+	function deshabilitarCheckcolaborador(){
+ 		if (document.getElementById("chckcolaborador").checked){
+ 			document.getElementById("txtEmpresa").hidden = true; 
+ 			document.getElementById("centrooperativo").hidden = false; 
+ 			document.getElementById("txtcategoria").value = 1;
+ 		}
+ 		
+ 	}
+
+ 	function deshabilitarCheck(){
+ 		if (document.getElementById("chckcliente").checked){
+ 			document.getElementById("txtEmpresa").hidden = false; 
+ 			document.getElementById("centrooperativo").hidden = true; 
+ 			document.getElementById("txtcategoria").value = 2;
+ 		}
+ 		
+ 	}
 
 function cambiarImagen() {
 	document.getElementById("logoregistro").src="resources/imagenes/PortalCongreso-15.png";

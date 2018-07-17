@@ -33,10 +33,8 @@
 				  <button type="submit" class="btn btn-success botonverde">INGRESAR</button>
 
 				  <div class="d-flex rec-olv">
-				  <a href="home">
-          <img class="img-regreso" src="resources/imagenes/back.png" alt="...">
-        </a>
-				  	<div class="mr-auto p-2">
+		
+				  	<div class=" p-2">
 				  		<div class="form-check">
 						    <input type="checkbox" class="form-check-input" id="exampleCheck1">
 						    <small><label class="form-check-label" for="exampleCheck1">Recordarme</label></small>
@@ -51,7 +49,11 @@
 				  </div>
 				  <div class="linea">
 				  </div>
-			
+			 <div>
+				  <a href="home">
+          			<img class="img-regreso" src="resources/imagenes/back.png" alt="...">
+        			</a>
+        			</div>
 				</form>
 	    	</span>
 	      	
@@ -68,6 +70,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
  	<script type="text/javascript">
+ 	
+
 	 
 	 function cambiar () {
 	  document.getElementById('logo').src = "resources/imagenes/PortalCongreso-15.png";

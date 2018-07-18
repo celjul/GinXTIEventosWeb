@@ -507,6 +507,9 @@ public class HelloController {
     	model.addAttribute("fotos", galeria);
     	return "galeriaadmin";
    	}
-    
-    
+
+	@RequestMapping("/ingresoPantalla")
+	public String ingresoPantalla() {
+		return "ingresoevento/ingresopantalla";
+	}
 }

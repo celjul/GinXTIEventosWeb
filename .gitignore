@@ -1,4 +1,11 @@
-/target/
 /.settings/
+/.idea/
+/target/
+/bin/
+/logs/
+.classpath
+.project
+*.iml
 
-/target
+.DS_Store
+.DS_Store?

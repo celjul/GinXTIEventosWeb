@@ -5,12 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.bst.model.*;
+import com.bst.model.ingresoevento.AvisoIngreso;
+import com.bst.model.ingresoevento.PantallaIngreso;
+import com.bst.service.NotificationService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.web.bind.annotation.*;
 
 import com.bst.dao.AgendaDao;
 import com.bst.dao.CentroOperativoDao;
@@ -19,15 +25,12 @@ import com.bst.dao.GaleriaDao;
 import com.bst.dao.PonentesDao;
 import com.bst.dao.SponsorsDao;
 import com.bst.dao.UsuarioDao;
-import com.bst.model.Agenda;
-import com.bst.model.Expositores;
-import com.bst.model.Galeria;
-import com.bst.model.Ponentes;
-import com.bst.model.Sponsors;
-import com.bst.model.Usuario;
 
 @RestController
 public class EndpointsRest {
+
+    @Autowired
+    private NotificationService notificationService;
 
 	 @Autowired
 	 private UsuarioDao usuarioDao;
@@ -49,7 +52,7 @@ public class EndpointsRest {
 	 
 	 @Autowired
 	 private GaleriaDao galeriaDao;
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTlogin")
 	public Map login(@RequestParam(value="email") String email,@RequestParam(value="codigo") String codigo) throws JSONException {
@@ -137,7 +140,7 @@ public class EndpointsRest {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTgetUsuario")
-	public Map getUsuario(@RequestParam(value="idusuario") String idUsuario) throws JSONException{
+	public Map getUsuario(@RequestParam String idUsuario) throws JSONException{
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
 	    Map mapa = new HashMap<>();
@@ -474,5 +477,24 @@ public class EndpointsRest {
 		galeriaDao = context.getBean(GaleriaDao.class);
 		galeriaDao.deleteFoto(id);
 	}
+
+
+
+
+    /**
+     * POST  /some-action  -> do an action.
+     *
+     * After the action is performed will be notified UserA.
+     */
+    @RequestMapping(value = "/RESTIngresaEventoUsuario", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<?> someAction(@RequestBody AvisoIngreso avisoIngreso) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        usuarioDao = context.getBean(UsuarioDao.class);
+        Usuario usuario = usuarioDao.getUsuario(avisoIngreso.getIdUsuario());
+        notificationService.notify(
+                new PantallaIngreso(usuario.getNombre()));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

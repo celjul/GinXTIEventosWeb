@@ -93,7 +93,7 @@ ion-icon {
 }
 
 .fondo-galeria{
-	background-image: url(../imagenes/PortalCongreso-29.png);
+	background-image: url(../imagenes/PortalCongreso-47.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -117,7 +117,15 @@ ion-icon {
 	background-color: #253E5A;
 }
 .fondo-patro{
-	background-image: url(../imagenes/PortalCongreso-32.png);
+	background-image: url(../imagenes/PortalCongreso-50.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #253E5A;
+}
+.fondo-sponsor{
+	background-image: url(../imagenes/PortalCongreso-51.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -311,6 +319,9 @@ p{
 	.img-fluid{
 		max-width: 40%;
 	}
+	.img-fluida{
+		max-width: 85%;
+	}
 	.oculto{
     		display: none;
     	}
@@ -344,6 +355,9 @@ p{
 	.img-fluid{
 		max-width: 40%;
 	}
+	.img-fluida{
+		max-width: 85%;
+	}
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) { 
@@ -354,6 +368,9 @@ p{
 	.img-fluid{
 		max-width: 78%;
 	}
+	.img-fluida{
+		max-width: 85%;
+	}
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) { 
@@ -362,6 +379,9 @@ p{
 		padding: 0;
 	}
 	.img-fluid{
+		max-width: 85%;
+	}
+	.img-fluida{
 		max-width: 85%;
 	}
 }

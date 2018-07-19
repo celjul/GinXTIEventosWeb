@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -66,11 +67,21 @@
             </tr>
             <c:forEach items="${lista1}" var="list1">
             <tr>
-              <th scope="col">${list1.horainicioString}</th>
-              <th scope="col">${list1.horafinString}</th>
-      			<td scope="col"><c:forEach items="${list1.ponentes}" var="ponent"><h2>${ponent.nombre}</h2></c:forEach></td>
+              <th scope="col" style="vertical-align:middle">${list1.horainicioString}</th>
+              <th scope="col" style="vertical-align:middle">${list1.horafinString}</th>
+              <c:choose>
+  <c:when test="${fn:length(list1.ponentes) gt 1}">
+    <td scope="col"><c:forEach items="${list1.ponentes}" var="ponent"><h2>${ponent.nombre}</h2></c:forEach></td>
+  <td scope="col" style="vertical-align:middle; font-size: 1.5em; ">${list1.titulo}</td>
+  </c:when>
+  <c:otherwise>
+   <td colspan="2" style="vertical-align:middle"><h2>${list1.titulo}</h2></td>
+ 
+  </c:otherwise>
+  </c:choose>
+      			
         	
-              <td scope="col">${list1.titulo}</td>
+             
             </tr>
             </c:forEach>
           </tbody>
@@ -105,18 +116,25 @@
              <tr>
               <th scope="col">8:00</th>
               <th scope="col">9:00</th>
-      			<td colspan="2"><h2>Registro</h2></h2></td>
+      			<td colspan="2"><h2>Registro</h2></td>
         	
             </tr>
             <c:forEach items="${lista2}" var="list2">
             <tr>
-              <th scope="col">${list2.horainicioString}</th>
-              <th scope="col">${list2.horafinString}</th>
+              <th scope="col" style="vertical-align:middle">${list2.horainicioString}</th>
+              <th scope="col" style="vertical-align:middle">${list2.horafinString}</th>
              
-      			<td scope="col"><c:forEach items="${list2.ponentes}" var="ponente"><h2>${ponente.nombre}</h2></c:forEach></td>
-        	
-              <td scope="col">${list2.titulo}</td>
-            </tr>
+                          <c:choose>
+  <c:when test="${fn:length(list2.ponentes) gt 1}">
+    <td scope="col"><c:forEach items="${list2.ponentes}" var="ponente"><h2>${ponente.nombre}</h2></c:forEach></td>
+  <td scope="col" style="vertical-align:middle; font-size: 1.5em;">${list2.titulo}</td>
+  </c:when>
+  <c:otherwise>
+   <td colspan="2" style="vertical-align:middle"><h2>${list2.titulo}</h2></td>
+ 
+  </c:otherwise>
+  </c:choose>
+      	   </tr>
             </c:forEach>
           </tbody>
         </table>

@@ -86,12 +86,10 @@
 	    <div class="col">
 	    	<span class="align-middle">
 	    		<div class="d-flex rec-olv">
-				  	<div class="mr-auto p-2">
-				  	<img src="resources/imagenes/PortalCongreso-15.png" onmouseover="cambiarImagen()" onmouseout="retornarImagen()" id="logoregistro" class="img-fluid" alt="Logo"/>
+				  	<div class=" p-2">
+				  	<img src="resources/imagenes/PortalCongreso-15.png" id="logoregistro" class="img-fluida" alt="Logo"/>
 				  	</div>
-				  	<div class="p-2">
-				  			
-				  	</div>
+				  	
 				  </div>
 	    		
 				<form  action="addregistro" method="post" id="myForm" name="myForm" style="display: inline-block; width: 100%;">

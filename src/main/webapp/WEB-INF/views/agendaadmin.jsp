@@ -58,6 +58,12 @@
                 <h2 style="font-size: 3em; color: rgb(196, 214, 0); float: right;">28</h2>
               </th>
             </tr>
+            <tr>
+              <th scope="col">8:00</th>
+              <th scope="col">9:00</th>
+      			<td colspan="2"><h2>Registro</h2></h2></td>
+        	
+            </tr>
             <c:forEach items="${lista1}" var="list1">
             <tr>
               <th scope="col">${list1.horainicioString}</th>

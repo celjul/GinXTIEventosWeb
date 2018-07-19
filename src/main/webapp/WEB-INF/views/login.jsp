@@ -16,10 +16,15 @@
     <div class="container">
 	  <div class="row login" >
 	    <div class="col">
-	      
+	      <div>
+				  <a href="home">
+          			<img class="img-regreso" src="resources/imagenes/back.png" alt="...">
+        			</a>
+        			</div>
 	    </div>
 	    <div class="col">
 	    	<span class="align-middle">
+	    	
 	    		<div class="text-center">
 					<img src="resources/imagenes/PortalCongreso-16.png" class="rounded" alt="Logo"  id="logo" name="logo" >
 				</div>
@@ -49,11 +54,7 @@
 				  </div>
 				  <div class="linea">
 				  </div>
-			 <div>
-				  <a href="home">
-          			<img class="img-regreso" src="resources/imagenes/back.png" alt="...">
-        			</a>
-        			</div>
+			 
 				</form>
 	    	</span>
 	      	

@@ -24,7 +24,7 @@
       }
     </style>
   </head>
-<body class="fondo-patro">
+<body class="fondo-sponsor">
 	<div class="container">
 		<header>
 		<div class="justify-content-start">

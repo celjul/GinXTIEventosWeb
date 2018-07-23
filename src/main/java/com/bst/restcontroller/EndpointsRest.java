@@ -22,6 +22,7 @@ import com.bst.dao.AgendaDao;
 import com.bst.dao.CentroOperativoDao;
 import com.bst.dao.ExpositoresDao;
 import com.bst.dao.GaleriaDao;
+import com.bst.dao.NotificacionesDao;
 import com.bst.dao.PonentesDao;
 import com.bst.dao.SponsorsDao;
 import com.bst.dao.UsuarioDao;
@@ -52,6 +53,9 @@ public class EndpointsRest {
 	 
 	 @Autowired
 	 private GaleriaDao galeriaDao;
+	 
+	 @Autowired
+	 private NotificacionesDao notificacionesDao;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTlogin")
@@ -478,7 +482,48 @@ public class EndpointsRest {
 		galeriaDao.deleteFoto(id);
 	}
 
+	@RequestMapping("/RESTgetNotificaciones")
+	public Map getNotificaciones() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		notificacionesDao = context.getBean(NotificacionesDao.class);
+		Map mapa = new HashMap<>();
+		 List<Notificaciones> notificaciones = notificacionesDao.getNotificaciones();
+		 mapa.put("notificaciones", notificaciones);
+		 context.close();
+		 return mapa;
+	}
 
+	@RequestMapping("/RESTaddNotificacion")
+	public void addNotificacion(@RequestParam(value="titulo") String titulo,
+			@RequestParam(value="detalle") String detalle) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		notificacionesDao = context.getBean(NotificacionesDao.class);
+		notificacionesDao.addNotificacion(titulo,detalle);
+		
+	}
+	@RequestMapping("/RESTgetNotificacion")
+	public Map getNotificacion(@RequestParam(value="id") String id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		notificacionesDao = context.getBean(NotificacionesDao.class);
+		Map mapa = new HashMap<>();
+		 Notificaciones notificaciones = notificacionesDao.getNotificacion(id);
+		 mapa.put("notificacion", notificaciones);
+		 context.close();
+		 return mapa;
+	}
+	@RequestMapping("/RESTdeleteNotificacion")
+	public void deleteNotificacion(@RequestParam(value="id") String id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		notificacionesDao = context.getBean(NotificacionesDao.class);
+		notificacionesDao.deleteNotificacion(id);
+	}
+	
+	@RequestMapping("/RESTupdateNotificacion")
+	public void updateNotificacion(@RequestParam(value="id") String id, @RequestParam(value="titulo") String titulo,@RequestParam(value="descripcion")  String descripcion) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		notificacionesDao = context.getBean(NotificacionesDao.class);
+		notificacionesDao.updateNotificacion(id,titulo,descripcion);
+	}
 
 
     /**
@@ -497,4 +542,5 @@ public class EndpointsRest {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+	
 }

@@ -20,11 +20,9 @@
 <body class="fondo-notificacion">
 	<div class="container">
 		<header>
-		<div class="justify-content-start">
-        <a href="atras">
-          <img class="img-regreso" src="resources/imagenes/back.png" alt="...">
-        </a>
-      </div>
+			<form action="agregarNotificacion" >
+			<input type="submit" value="agregar">
+			</form>
 			<ul class="nav justify-content-end">
 			  <li class="nav-item">
 			    <a class="nav-link disabled" href="#">
@@ -32,6 +30,7 @@
 			    </a>
 			  </li>
 			</ul>
+
 		</header>
   
      
@@ -46,6 +45,7 @@
             <tr>
             
               <th scope="row">${notificacion.titulo}</th>
+              
                <div class="modal fade" id="exampleModalCenter${notificacion.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -69,7 +69,7 @@
               <td>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${notificacion.id}">
                   Ver
-                </button>
+                </button><form action="editarnotificacion"><input type="hidden" id="idnotificacion" name="idnotificacion" value="${notificacion.id}"><input type="submit" class="btn btn-primary" value="editar"></form>
               </td>
              
             </tr> </c:forEach>

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bst.model.Agenda;
 import com.bst.model.Expositores;
+import com.bst.model.Notificaciones;
 import com.bst.model.Ponentes;
 import com.bst.model.Sponsors;
 import com.bst.model.Usuario;
@@ -310,8 +311,12 @@ public class HelloController {
     	return "hello";
    	}
     
-    @GetMapping("/notificaciones")
+
    	public String listanotificaciones(Model model,HttpServletRequest request) {
+   		
+   	 Map mapa = serviciosRest.getNotificaciones();
+ 	List notificaciones = (List) mapa.get("notificaciones");
+ 	model.addAttribute("notificaciones", notificaciones);
     	return "notificaciones";
    	}
     
@@ -512,4 +517,54 @@ public class HelloController {
 	public String ingresoPantalla() {
 		return "ingresoevento/ingresopantalla";
 	}
+	
+	 @GetMapping("/notificacionesadmin")
+	   	public String notificacionesadmin(Model model,HttpServletRequest request) {
+		 Map mapa = serviciosRest.getNotificaciones();
+	    	List notificaciones = (List) mapa.get("notificaciones");
+	    	model.addAttribute("notificaciones", notificaciones);
+	    	return "notificacionesadmin";
+	   	}
+	 
+	 @GetMapping("/agregarNotificacion")
+	   	public String agregarNotificacion(Model model,HttpServletRequest request) {
+	    	return "agregarNotificacion";
+	   	}
+	    	
+	 @PostMapping("/addNotificacion")
+	   	public String addNotificacion(Model model,HttpServletRequest request) {
+	    	String titulo = request.getParameter("txtnombre");
+	    	String detalle = request.getParameter("txtDetalle");
+	    	serviciosRest.addNotificacion(titulo,detalle);
+	    	return "menuadmin";
+	   	}
+	 
+	 @GetMapping("/editarnotificacion")
+	   	public String editarnotificacion(Model model,HttpServletRequest request) {
+	    	String id = request.getParameter("idnotificacion");
+	    	Map mapa = serviciosRest.getNotificacion(id);
+	    	Notificaciones notificacion = (Notificaciones) mapa.get("notificacion");
+	    	model.addAttribute("notificacion", notificacion);
+
+	    	return "editarNotificacion";
+	   	}
+	 
+	 @GetMapping("/deleteNotificacion")
+	   	public String deleteNotificacion(Model model,HttpServletRequest request) {
+	    	String id = request.getParameter("idnotificacion");
+	    	 serviciosRest.deleteNotificacion(id);
+	    	
+	    	return "menuadmin";
+	   	}
+	 
+	 @PostMapping("/updateNotificacion")
+	   	public String updateNotificacion(Model model,HttpServletRequest request) {
+	    	String id = request.getParameter("idnotificacion");
+	    	String titulo = request.getParameter("txtnombre");
+	    	String descripcion = request.getParameter("txtDetalle");
+	    	 serviciosRest.updateNotificacion(id,titulo,descripcion);
+	    	
+	    	return "menuadmin";
+	   	}
+	
 }

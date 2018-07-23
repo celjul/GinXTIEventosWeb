@@ -108,7 +108,7 @@ public void sendPost() throws Exception {
 public void sendMensajeRegistro(String nombre, String telefono,int numero) throws Exception {
 	
 	JSONObject objeto = new JSONObject();
-	String mensaje =nombre+" bienvenido a la innovaccion tu codigo de acceso es : "+numero+" descargala proximamente";
+	String mensaje =nombre+" Bienvenido a Innovacción. Descarga la app oficial, Tu código de acceso es "+numero+": IOS:   Android: https://goo.gl/TWUVhd";
 	objeto.put("text",mensaje);
 	String numeroenvio = String.valueOf(telefono);
 	JSONObject objeto2 = new JSONObject();

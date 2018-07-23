@@ -88,6 +88,13 @@
           </h2>
         </div>
       </div>
+      <div class="col-6">
+        <div class="opcion-admin">
+          <h2>
+            <a href="notificacionesadmin">Notificaciones</a>
+          </h2>
+        </div>
+      </div>
     </div>
   </div>
 </body>

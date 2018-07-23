@@ -39,5 +39,9 @@
    	<bean id = "galeriaDao" class = "com.bst.dao.impl.GaleriaDaoImpl">
     	<property name = "dataSource" ref = "dataSource" />  
    	</bean>
+   	
+   	<bean id = "notificacionesDao" class = "com.bst.dao.impl.NotificacionesDaoImpl">
+    	<property name = "dataSource" ref = "dataSource" />  
+   	</bean>
       
 </beans>

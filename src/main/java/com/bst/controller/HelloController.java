@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,11 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.xml.bind.DatatypeConverter;
 
+import org.apache.poi.ss.usermodel.Sheet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bst.model.Agenda;
 import com.bst.model.Expositores;
@@ -109,6 +112,12 @@ public class HelloController {
     	List lista = (List) mapa.get("usuarios");
     	model.addAttribute("lista",lista);	
         return "usuariosadmin";
+    }
+    
+    @RequestMapping("/xls")
+    public XlsView   generarXls(Model model) {
+    	XlsView xls = new XlsView();
+    	 return xls;
     }
     
     @SuppressWarnings("rawtypes")
@@ -311,10 +320,9 @@ public class HelloController {
     	return "hello";
    	}
     
-
+    @GetMapping("/notificaciones")
    	public String listanotificaciones(Model model,HttpServletRequest request) {
-   		
-   	 Map mapa = serviciosRest.getNotificaciones();
+    Map mapa = serviciosRest.getNotificaciones();
  	List notificaciones = (List) mapa.get("notificaciones");
  	model.addAttribute("notificaciones", notificaciones);
     	return "notificaciones";

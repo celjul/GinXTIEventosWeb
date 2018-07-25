@@ -79,6 +79,7 @@
        <groupId>org.springframework.boot</groupId>
        <artifactId>spring-boot-devtools</artifactId>
    </dependency>
+   
 
 
 		<!--Fragmento para web sockets-->
@@ -92,6 +93,12 @@
 		</dependency>
 
 		<!--fin de dependencias para el web socket-->
+		
+		<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>3.14</version>
+</dependency>
 	
   </dependencies>
 	<properties>

@@ -1,8 +1,10 @@
 com\bst\model\ingresoevento\PantallaIngreso.class
 com\bst\configuration\WebSocketConfig.class
 com\bst\model\ingresoevento\AvisoIngreso.class
+com\bst\dao\impl\NotificacionesDaoImpl.class
 com\bst\dao\impl\ExpositoresDaoImpl.class
 com\bst\dao\impl\GaleriaDaoImpl.class
+com\bst\dao\NotificacionesDao.class
 com\bst\model\Ponentes.class
 com\bst\model\CentroOperativo.class
 com\bst\dao\CentroOperativoDao.class
@@ -18,6 +20,7 @@ com\bst\model\CategoriaUsuario.class
 com\bst\dao\impl\CentroOperativoDaoImpl.class
 com\bst\dao\UsuarioDao.class
 com\bst\dao\impl\UsuariosDaoImpl.class
+com\bst\controller\XlsView.class
 com\bst\model\Agenda.class
 com\bst\controller\LlamadasController.class
 com\bst\MainApp.class
@@ -25,6 +28,7 @@ com\bst\model\Sponsors.class
 com\bst\model\EstatusUsuario.class
 com\bst\model\Galeria.class
 com\bst\restcontroller\EndpointsRest.class
+com\bst\model\Notificaciones.class
 com\bst\model\Expositores.class
 com\bst\dao\ExpositoresDao.class
 com\bst\dao\SponsorsDao.class

@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import com.bst.dao.AgendaDao;
@@ -69,16 +67,20 @@ public class EndpointsRest {
 	    return mapa;    
     }
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked", "resource" })
 	@RequestMapping("/RESTloginapp")
-	public Map loginapp(@RequestParam(value="email") String email,@RequestParam(value="codigo") String codigo) throws JSONException {
+	public ResponseEntity loginapp(@RequestParam(value="email") String email,@RequestParam(value="codigo") String codigo) throws JSONException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
 		Usuario usuario = usuarioDao.logeoapp(email, codigo);
 	    Map mapa = new HashMap<>();
-	    mapa.put("Categoria", usuario);
+	    if(usuario.getId()!=0) {
+	    mapa.put("Usuario", usuario);
 	    context.close();
-	    return mapa;    
+	    return new ResponseEntity<>(mapa, HttpStatus.OK);   
+	    }
+	    return new ResponseEntity<String>("Unauthorized", HttpStatus.UNAUTHORIZED);
+	     
     }
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -105,7 +107,6 @@ public class EndpointsRest {
 		 return mapa;
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTanadirUsuario")
 	public void registrar(
 			@RequestParam(value="nombre") String nombre,
@@ -124,7 +125,6 @@ public class EndpointsRest {
   
     }
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTanadirCliente")
 	public void registrarClientes(
 			@RequestParam(value="nombre") String nombre,
@@ -154,7 +154,7 @@ public class EndpointsRest {
 	    return mapa;    	
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+
 	@RequestMapping("/RESTupdateUsuario")
 	public void updateUsuario(@RequestParam(value="nombre") String nombre, 
 			@RequestParam(value="email") String email,@RequestParam(value="telefono") String telefono,
@@ -422,6 +422,7 @@ public class EndpointsRest {
 		 return mapa;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("/RESTgetEvento")
 	public Map getEvento(String id) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -438,8 +439,10 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		agendaDao = context.getBean(AgendaDao.class);
 		agendaDao.deleteEvento(id);
+		context.close();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("/RESTupdateAgenda")
 	public void updateAgenda(@RequestParam(value="titulo") String titulo,
 			@RequestParam(value="fechainicio") String fechainicio,@RequestParam(value="horainicio") String horainicio,
@@ -453,6 +456,7 @@ public class EndpointsRest {
 		 context.close();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("/RESTgetGaleria")
 	public Map getGaleria() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -464,6 +468,7 @@ public class EndpointsRest {
 		 return mapa;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("/RESTaddGaleria")
 	public Map addGaleria(@RequestParam(value="foto") String foto) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -480,8 +485,10 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		galeriaDao = context.getBean(GaleriaDao.class);
 		galeriaDao.deleteFoto(id);
+		context.close();
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/RESTgetNotificaciones")
 	public Map getNotificaciones() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -499,8 +506,10 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		notificacionesDao = context.getBean(NotificacionesDao.class);
 		notificacionesDao.addNotificacion(titulo,detalle);
+		context.close();
 		
 	}
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("/RESTgetNotificacion")
 	public Map getNotificacion(@RequestParam(value="id") String id) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -516,6 +525,7 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		notificacionesDao = context.getBean(NotificacionesDao.class);
 		notificacionesDao.deleteNotificacion(id);
+		context.close();
 	}
 	
 	@RequestMapping("/RESTupdateNotificacion")
@@ -523,6 +533,7 @@ public class EndpointsRest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		notificacionesDao = context.getBean(NotificacionesDao.class);
 		notificacionesDao.updateNotificacion(id,titulo,descripcion);
+		context.close();
 	}
 
 

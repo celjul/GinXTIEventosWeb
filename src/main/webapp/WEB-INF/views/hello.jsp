@@ -9,7 +9,7 @@
 <body>
   <h1>Spring Boot - MVC web application example</h1>
   <hr>
-	<form action="test"><input type="submit"/></form>
+	<form action="xls"><input type="submit"/></form>
 
 </body>
 </html>

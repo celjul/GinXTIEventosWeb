@@ -8,7 +8,7 @@
 	<title>Insert title here</title>
 </head>
 <body >
-	
+	<form action="xls"><input type="submit" value="Descargar Excel"/></form>
 		<table style="width: 100%" >
 			<thead>
 				<tr>

@@ -10,7 +10,7 @@ public interface UsuarioDao {
 	public void registrar(String nombre, String email, String contrasena, String telefono
 			, Date fechaNacimiento, int idCentroOperativo , int idCategoria);
 	
-	public int logeo(String email, String codigo);
+	public Usuario logeo(String email, String codigo);
 	
 	@SuppressWarnings("rawtypes")
 	public List getUsuarios();

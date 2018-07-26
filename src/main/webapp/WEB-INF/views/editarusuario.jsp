@@ -30,7 +30,8 @@
 <option value="${usuario.categoria.id}">${usuario.categoria.detalle}</option>
 	<option value="1">Colaborador</option>
 	<option value="2">Cliente</option>	  
-	<option value="3">Administrador</option>	  	  
+	<option value="3">Administrador</option>
+	<option value="4">Expositor</option>	  	  
 </select>
 <label>Status</label>
 <select id="status" name="status" >

@@ -16,4 +16,8 @@ public interface NotificacionesDao {
 
 	public void updateNotificacion(String id, String titulo, String descripcion);
 
+	public List<Notificaciones> getNotificacionExpositor(int id);
+
+	public void addNotificacionExpositor(String titulo, String detalle, int id);
+
 }

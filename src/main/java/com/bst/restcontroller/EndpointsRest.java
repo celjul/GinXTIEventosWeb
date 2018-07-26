@@ -60,9 +60,9 @@ public class EndpointsRest {
 	public Map login(@RequestParam(value="email") String email,@RequestParam(value="codigo") String codigo) throws JSONException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		usuarioDao = context.getBean(UsuarioDao.class);
-		int categoria = usuarioDao.logeo(email, codigo);
+		Usuario usuario = usuarioDao.logeo(email, codigo);
 	    Map mapa = new HashMap<>();
-	    mapa.put("Categoria", categoria);
+	    mapa.put("usuario", usuario);
 	    context.close();
 	    return mapa;    
     }
@@ -535,8 +535,25 @@ public class EndpointsRest {
 		notificacionesDao.updateNotificacion(id,titulo,descripcion);
 		context.close();
 	}
+	
+	@RequestMapping("/RESTgetNotificacionesExponente")
+	public Map getNotificacionesExponente(@RequestParam(value="id") int id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		notificacionesDao = context.getBean(NotificacionesDao.class);
+		Map mapa = new HashMap<>();
+		List<Notificaciones> notificaciones = notificacionesDao.getNotificacionExpositor(id);
+		mapa.put("notificaciones", notificaciones);
+		context.close();
+		return mapa;
+	}
 
-
+	public void addNotificacionExpositor(@RequestParam(value="titulo") String titulo,
+			@RequestParam(value="detalle") String detalle,@RequestParam(value="id") int id) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		notificacionesDao = context.getBean(NotificacionesDao.class);
+		notificacionesDao.addNotificacionExpositor(titulo,detalle,id);
+		context.close();
+	}
     /**
      * POST  /some-action  -> do an action.
      *
@@ -552,6 +569,10 @@ public class EndpointsRest {
                 new PantallaIngreso(usuario.getNombre()));
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+	
+
+	
 
 	
 }

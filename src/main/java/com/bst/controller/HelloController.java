@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.xml.bind.DatatypeConverter;
 
@@ -53,19 +54,37 @@ public class HelloController {
 	
 	@SuppressWarnings("rawtypes")
 	@RequestMapping("/logeo")
-	public String trylogin(HttpServletRequest request) {
+	public String trylogin(HttpServletRequest request,HttpSession session) {
+		session = request.getSession();
 		String email = request.getParameter("txtemail");
     	String codigo = request.getParameter("txtcodigo");
-		Map categoria = serviciosRest.login(email, codigo);
-		int cat = Integer.valueOf(categoria.get("Categoria").toString());
-		if(cat!=0) {
-			if(cat!=3) {
-			return "menu";}else {
+		Map mapa = serviciosRest.login(email, codigo);
+		Usuario usuario = (Usuario) mapa.get("usuario");
+		switch(usuario.getCategoria().getId()) {
+			case 1:
+				return "menu";
+			case 2:
+				return "menu";
+			case 3:
 				return "menuadmin";
-			}
+			case 4:
+				session.setAttribute("user", usuario);
+				return "menuexpositor";
+			default:
+				return "login";	
 		}
-		return "login";
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@GetMapping("/notificacionesexpositor")
+    public String  notificacionesexpositor(Map<String, Object> model,HttpSession session) {
+		Usuario user = (Usuario) session.getAttribute("user");
+    	Map mapa = serviciosRest.getNotificacionesExponente(user.getId());
+    	List lista = (List) mapa.get("notificaciones");
+    	model.put("lista",lista);	
+        return "notificacionesexpositor";
+        
+    }
 	    
     @SuppressWarnings("rawtypes")
 	@GetMapping("/registro")
@@ -234,7 +253,7 @@ public class HelloController {
    	}
      
     @GetMapping("/logout")
-   	public String logout(Model model) {
+   	public String logout(Model model,HttpSession session) {
     	return "login";
    	}
     @GetMapping("/revisarPonente")
@@ -344,6 +363,12 @@ public class HelloController {
     	return "menu";
    	}
 
+    @GetMapping("/atrasExpo")
+   	public String menuexpositor(Model model,HttpServletRequest request) {
+    	return "menuexpositor";
+   	}
+    
+    
     @GetMapping("/sponsors")
    	public String listasponsors(Model model) {
     	Map mapa = serviciosRest.getListasponsors();
@@ -546,6 +571,59 @@ public class HelloController {
 	    	serviciosRest.addNotificacion(titulo,detalle);
 	    	return "menuadmin";
 	   	}
+	 
+	 @GetMapping("/agregarNotificacionExpositor")
+	   	public String agregarNotificacionExpositor(Model model,HttpServletRequest request) {
+	    	return "agregarNotificacionExpositor";
+	   	}
+	 
+	 @PostMapping("/addNotificacionExpositor")
+	   	public String addNotificacionExpositor(Model model,HttpServletRequest request,HttpSession session) {
+		 	Usuario usuario = (Usuario) session.getAttribute("user");
+	    	String titulo = request.getParameter("txtnombre");
+	    	String detalle = request.getParameter("txtDetalle");
+	    	serviciosRest.addNotificacionExpositor(titulo,detalle,usuario.getId());
+	    	Map mapa = serviciosRest.getNotificacionesExponente(usuario.getId());
+	    	List lista = (List) mapa.get("notificaciones");
+	    	model.addAttribute("lista",lista);	
+	        return "notificacionesexpositor";
+	    	
+	   	}
+	 
+	 @GetMapping("/editarnotificacionExpositor")
+	   	public String editarnotificacionExpositor(Model model,HttpServletRequest request) {
+	    	String id = request.getParameter("idnotificacion");
+	    	Map mapa = serviciosRest.getNotificacion(id);
+	    	Notificaciones notificacion = (Notificaciones) mapa.get("notificacion");
+	    	model.addAttribute("notificacion", notificacion);
+
+	    	return "editarNotificacionExpositor";
+	   	}
+	 
+	 @GetMapping("/deleteNotificacionExpositor")
+	   	public String deleteNotificacionExpositor(Model model,HttpServletRequest request,HttpSession session) {
+	    Usuario usuario = (Usuario) session.getAttribute("user");	
+		 String id = request.getParameter("idnotificacion");
+	    	 serviciosRest.deleteNotificacion(id);
+	    	 Map mapa = serviciosRest.getNotificacionesExponente(usuario.getId());
+		    	List lista = (List) mapa.get("notificaciones");
+		    	model.addAttribute("lista",lista);	
+		        return "notificacionesexpositor";
+	   	}
+	 
+	 @PostMapping("/updateNotificacionExpositor")
+	   	public String updateNotificacionExpositor(Model model,HttpServletRequest request,HttpSession session) {
+		 Usuario usuario = (Usuario) session.getAttribute("user");	
+		 String id = request.getParameter("idnotificacion");
+	    	String titulo = request.getParameter("txtnombre");
+	    	String descripcion = request.getParameter("txtDetalle");
+	    	 serviciosRest.updateNotificacion(id,titulo,descripcion);
+	    	 Map mapa = serviciosRest.getNotificacionesExponente(usuario.getId());
+		    	List lista = (List) mapa.get("notificaciones");
+		    	model.addAttribute("lista",lista);	
+		        return "notificacionesexpositor";
+	   	}
+	 
 	 
 	 @GetMapping("/editarnotificacion")
 	   	public String editarnotificacion(Model model,HttpServletRequest request) {

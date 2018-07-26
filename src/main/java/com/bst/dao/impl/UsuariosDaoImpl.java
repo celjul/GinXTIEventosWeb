@@ -60,17 +60,23 @@ public class UsuariosDaoImpl implements UsuarioDao {
 	}
 
 	@Override
-	public int logeo(String email, String codigo) {
+	public Usuario logeo(String email, String codigo) {
 		Connection conn = null;
-		int a=0;
+		Usuario usuario = new Usuario();
 		try {
-			String sql = "select idCategoria from tblusuarios where email = '"+email+"' and contrasena = '"+codigo+"' ";
+			String sql = "select * from tblusuarios where email = '"+email+"' and contrasena = '"+codigo+"' ";
 			conn = dataSource.getConnection();
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			if(rs.first()) {
-				a = rs.getInt("idCategoria");
+				
+				usuario.setId(rs.getInt("idUsuarios"));
+				usuario.setEmail(email);
+				usuario.setNombre(rs.getString("nombre"));
+				CategoriaUsuario cat = new CategoriaUsuario();
+				cat.setId(rs.getInt("idCategoria"));
+				usuario.setCategoria(cat);
 			}
 			rs.close();
 			ps.close();
@@ -84,7 +90,7 @@ public class UsuariosDaoImpl implements UsuarioDao {
 				} catch (SQLException e) {}
 			}
 		}		
-		return a;
+		return usuario;
 	}
 
 	@Override

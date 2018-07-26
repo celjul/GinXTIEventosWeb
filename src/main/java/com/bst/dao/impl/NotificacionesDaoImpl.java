@@ -159,4 +159,60 @@ public class NotificacionesDaoImpl implements NotificacionesDao{
 	
 	}
 	}
+
+
+	@Override
+	public List<Notificaciones> getNotificacionExpositor(int id) {
+		Connection conn = null;
+		List<Notificaciones> notificaciones = new ArrayList<>();
+		try {
+			String sql = "SELECT * FROM notificacionesportal where usuarioId ="+id;
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Notificaciones notificacion = new Notificaciones();
+				notificacion.setTitulo(rs.getString("titulo"));
+				notificacion.setId(rs.getInt("id"));
+				notificacion.setDescripcion(rs.getString("descripcion"));
+				notificaciones.add(notificacion);
+			}
+			rs.close();
+			ps.close();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+			
+		}finally {
+		if (conn != null) {
+			try {
+			conn.close();
+			} catch (SQLException e) {}
+		}
+	
+		
+		}return notificaciones;
+	}
+
+
+	@Override
+	public void addNotificacionExpositor(String titulo, String detalle, int id) {
+		Connection conn = null;
+		try {
+			String sql = "insert into notificacionesportal(titulo,descripcion,usuarioId)values('"+titulo+"','"+detalle+"',"+id+")";
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			ps.close();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+			
+		}finally {
+		if (conn != null) {
+			try {
+			conn.close();
+			} catch (SQLException e) {}
+		}
+	
+	}	
+	}
 }
